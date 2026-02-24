@@ -6,6 +6,7 @@
 |-------|----------|-----------------|-------|
 | Phase 1: Design | ~15 minutes | Product Owner | Understanding requirements, designing solution on whiteboard |
 | Phase 2: Implementation | ~45-60 minutes | Tech Lead | Coding, testing, using AI tools, working software |
+| Phase 3: Full-Stack Feature | ~30 minutes | Tech Lead | Backend + frontend integration, React patterns |
 
 ---
 
@@ -39,7 +40,7 @@ The Product Owner explains the current pipeline and describes the new validation
 
 ---
 
-## Phase 2 — Implementation (70% of total score)
+## Phase 2 — Implementation (50% of total score)
 
 The Tech Lead provides the candidate with the repo and says:
 
@@ -69,15 +70,43 @@ The Tech Lead provides the candidate with the repo and says:
 
 ---
 
+## Phase 3 — Full-Stack Feature (20% of total score)
+
+For full-stack candidates. The Tech Lead says:
+
+> "Great work on the backend. Now let's add a user-facing feature. The React UI is already built — you can see it in the browser. When you upload an XML file, you get a success message but no way to know when processing finishes.
+>
+> Your task is to add **upload processing status tracking**:
+> 1. Backend: Implement the status endpoint in `Api/StatusEndpoints.cs` (check where the file is in the pipeline)
+> 2. Frontend: Implement the API client function, polling hook, and status component
+> 3. Wire it into the upload page
+>
+> See `NEW-FEATURE-FULLSTACK.md` for details. The stubs have TODO comments explaining what to implement."
+
+### Full-Stack Scoring
+
+| Criteria | Excellent (5) | Good (3-4) | Needs Work (1-2) |
+|----------|--------------|------------|------------------|
+| **Status endpoint** | Correctly checks output/ → failed/ → input/ prefixes, proper response shape, handles edge cases | Checks some prefixes, mostly correct response | Incomplete or incorrect logic |
+| **Polling hook** | Correct useEffect lifecycle, interval cleanup, stops on terminal state, handles errors | Hook works, may have cleanup issues or missing error handling | Broken hook, no cleanup, doesn't stop polling |
+| **Status component** | All states rendered (pending/completed/failed/not_found), appropriate styling, results link works | Most states rendered, minor styling issues | Missing states or broken rendering |
+| **Integration** | Upload → poll → status → link works end-to-end smoothly | Mostly works, minor issues | Integration broken or incomplete |
+| **TypeScript quality** | Proper types throughout, no `any`, interfaces used correctly | Mostly typed, minor gaps | Heavy use of `any` or type errors |
+
+**Phase 3 Total: ___ / 25**
+
+---
+
 ## Overall Score
 
 | Component | Score | Max |
 |-----------|-------|-----|
 | Phase 1: Design | | 25 |
 | Phase 2: Implementation | | 35 |
-| **Total** | | **60** |
+| Phase 3: Full-Stack Feature | | 25 |
+| **Total** | | **85** |
 
-### Rating Scale
+### Rating Scale (Backend only — Phases 1+2)
 
 | Score | Rating | Recommendation |
 |-------|--------|---------------|
@@ -85,6 +114,15 @@ The Tech Lead provides the candidate with the repo and says:
 | 36-47 | Good | Hire |
 | 24-35 | Adequate | Borderline, discuss |
 | Below 24 | Below expectations | No hire |
+
+### Rating Scale (Full-Stack — All Phases)
+
+| Score | Rating | Recommendation |
+|-------|--------|---------------|
+| 68-85 | Excellent | Strong hire |
+| 51-67 | Good | Hire |
+| 34-50 | Adequate | Borderline, discuss |
+| Below 34 | Below expectations | No hire |
 
 ---
 

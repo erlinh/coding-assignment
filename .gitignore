@@ -34,4 +34,9 @@ coverage/
 ## Docker
 docker-compose.override.yml
 
+## Node / UI
+node_modules/
+ui/dist/
+src/OrderTransformer/wwwroot/
+
 .evaluation/

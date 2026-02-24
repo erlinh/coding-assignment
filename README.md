@@ -1,6 +1,6 @@
 # Order Transformer — Coding Assessment
 
-A .NET 9 Worker Service that monitors Azure Blob Storage for incoming XML order files, transforms them to JSON, and stores the output back to blob storage.
+A .NET 9 Web Application that monitors Azure Blob Storage for incoming XML order files, transforms them to JSON, and stores the output back to blob storage. Includes a React UI for viewing processed orders.
 
 ## Interview Plan
 
@@ -44,21 +44,36 @@ In this assessment you have tools:
    - Run tests incrementally, not just at the end
 5. **Verify** — Build, test, and run end-to-end with Docker
 
+### Phase 3: Full-Stack Feature (~30 minutes, for full-stack candidates)
+
+**Goal:** Candidate implements a feature that spans both backend and frontend.
+
+1. **Receive the requirement** — Present the feature spec from `NEW-FEATURE-FULLSTACK.md`
+2. **Explore the UI** — Open the browser, navigate the React app, understand the upload flow
+3. **Implement** — The candidate implements:
+   - Backend: Status endpoint in `Api/StatusEndpoints.cs`
+   - Frontend: API client function, polling hook, status component
+   - Integration: Upload → poll → status → link to results
+4. **Verify** — Upload an XML file, watch status change from pending to completed
+
 ### Start Services
 
 ```bash
-# Start infrastructure
+# Terminal 1: Start Azurite
 docker compose up -d
-
-# Verify seed data
 docker compose logs azurite-init
+
+# Terminal 2: Run .NET backend (API + worker)
+dotnet run --project src/OrderTransformer
+
+# Terminal 3: Run React dev server
+cd ui && pnpm install && pnpm dev
 
 # Run tests (should all pass)
 dotnet test tests/OrderTransformer.Tests
-
-# Run the app
-dotnet run --project src/OrderTransformer
 ```
+
+Open http://localhost:5173 to view the UI.
 
 ### Clean Up
 
