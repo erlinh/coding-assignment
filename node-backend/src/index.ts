@@ -40,9 +40,7 @@ await fastify.register(swaggerUi, {
   },
 });
 
-await fastify.register(multipart, {
-  attachFieldsToBody: true,
-});
+await fastify.register(multipart);
 
 const serviceFactory = createServiceFactory(config.blobStorage);
 const blobService = serviceFactory.createBlobStorageService();

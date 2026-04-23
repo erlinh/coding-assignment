@@ -1,0 +1,413 @@
+{
+  "version": "6.0",
+  "nxVersion": "22.6.5",
+  "pathMappings": {},
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "nonProjectFiles": [
+      {
+        "file": "NEW-FEATURE-FULLSTACK.md",
+        "hash": "2247245447474437089"
+      },
+      {
+        "file": "nx.json",
+        "hash": "16065994131877946731"
+      },
+      {
+        "file": "specs/features/000-core-transformation-pipeline.md",
+        "hash": "14602440858937797306"
+      },
+      {
+        "file": ".claude/commands/build.md",
+        "hash": "2925338292557246761"
+      },
+      {
+        "file": "init-scripts/azurite/init-azurite.sh",
+        "hash": "597553422299587515"
+      },
+      {
+        "file": ".claude/commands/debug.md",
+        "hash": "9038906980977480755"
+      },
+      {
+        "file": "specs/features/TEMPLATE.md",
+        "hash": "2827682139594276785"
+      },
+      {
+        "file": ".claude/settings.json",
+        "hash": "17909378972202682304"
+      },
+      {
+        "file": ".claude/commands/code.md",
+        "hash": "8574513991352166604"
+      },
+      {
+        "file": ".github/ISSUE_TEMPLATE/feature-spec.md",
+        "hash": "10878967591741982930"
+      },
+      {
+        "file": "specs/adrs/002-immutable-records-with-init-setters.md",
+        "hash": "5127570715473977206"
+      },
+      {
+        "file": "specs/adrs/003-polling-over-event-driven.md",
+        "hash": "7992014832435082574"
+      },
+      {
+        "file": "specs/design/000-core-transformation-pipeline.md",
+        "hash": "6068711719513812811"
+      },
+      {
+        "file": ".claude/commands/test.md",
+        "hash": "14740549364594128384"
+      },
+      {
+        "file": "specs/features/003-web-ui-order-viewer.md",
+        "hash": "16714154800038940720"
+      },
+      {
+        "file": "specs/features/001-order-validation-and-mapping.md",
+        "hash": "11537408408099849940"
+      },
+      {
+        "file": "specs/test-plans/TEMPLATE.md",
+        "hash": "637602078574968333"
+      },
+      {
+        "file": "README.md",
+        "hash": "12835922543188410162"
+      },
+      {
+        "file": ".claude/commands/spec.md",
+        "hash": "6535044768039063559"
+      },
+      {
+        "file": ".vscode/tasks.json",
+        "hash": "15036011115644625298"
+      },
+      {
+        "file": "init-scripts/azurite/seed-data/order-batch-001.xml",
+        "hash": "12600071334645409409"
+      },
+      {
+        "file": "specs/design/001-order-validation-and-mapping.md",
+        "hash": "16234801100290287148"
+      },
+      {
+        "file": "CLAUDE.md",
+        "hash": "6723968862868609605"
+      },
+      {
+        "file": "specs/features/002-order-date-validation.md",
+        "hash": "9879558975917193573"
+      },
+      {
+        "file": "specs/adrs/TEMPLATE.md",
+        "hash": "13459148247950901647"
+      },
+      {
+        "file": "NEW-FEATURE.md",
+        "hash": "14086723545722941337"
+      },
+      {
+        "file": ".playwright-cli/console-2026-04-23T17-08-50-042Z.log",
+        "hash": "7135864619909474298"
+      },
+      {
+        "file": "specs/design/TEMPLATE.md",
+        "hash": "9024285371511034574"
+      },
+      {
+        "file": "package-lock.json",
+        "hash": "10991844706167202751"
+      },
+      {
+        "file": "specs/README.md",
+        "hash": "3979152606101343428"
+      },
+      {
+        "file": ".vscode/launch.json",
+        "hash": "15415909510963589287"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "14131790413828198662"
+      },
+      {
+        "file": "specs/adrs/001-dictionary-based-field-mapping.md",
+        "hash": "4439371307530166145"
+      },
+      {
+        "file": "specs/features/004-upload-processing-status.md",
+        "hash": "15195000055252919743"
+      },
+      {
+        "file": ".github/workflows/claude-code.yml",
+        "hash": "9310634948935212995"
+      },
+      {
+        "file": "EVALUATION.md",
+        "hash": "18109864214690544894"
+      },
+      {
+        "file": "package.json",
+        "hash": "9220996580235745866"
+      },
+      {
+        "file": "specs/test-plans/000-core-transformation-pipeline.md",
+        "hash": "1309957274797459787"
+      },
+      {
+        "file": ".claude/commands/new-spec.md",
+        "hash": "16349014944912866886"
+      },
+      {
+        "file": "specs/test-plans/001-order-validation-and-mapping.md",
+        "hash": "8191101264163664138"
+      },
+      {
+        "file": ".github/workflows/ci.yml",
+        "hash": "16240130773877443013"
+      },
+      {
+        "file": "docker-compose.yml",
+        "hash": "2106989555055391742"
+      }
+    ],
+    "projectFileMap": {
+      "backend": [
+        {
+          "file": "node-backend/.gitignore",
+          "hash": "9284290083362166669"
+        },
+        {
+          "file": "node-backend/package.json",
+          "hash": "6027572049829663585"
+        },
+        {
+          "file": "node-backend/project.json",
+          "hash": "11903955791534263203"
+        },
+        {
+          "file": "node-backend/src/config/index.ts",
+          "hash": "10580200569515022272"
+        },
+        {
+          "file": "node-backend/src/index.ts",
+          "hash": "16582275451545596647"
+        },
+        {
+          "file": "node-backend/src/routes/orders.ts",
+          "hash": "11075882968044437035"
+        },
+        {
+          "file": "node-backend/src/routes/status.ts",
+          "hash": "7486546140119038466"
+        },
+        {
+          "file": "node-backend/src/services/BlobStorageService.ts",
+          "hash": "15474751010690705174"
+        },
+        {
+          "file": "node-backend/src/services/FieldMappingService.ts",
+          "hash": "13701570449355251178"
+        },
+        {
+          "file": "node-backend/src/services/JsonTransformerService.ts",
+          "hash": "16523572495865627743"
+        },
+        {
+          "file": "node-backend/src/services/OrderValidatorService.ts",
+          "hash": "4592883043405879916"
+        },
+        {
+          "file": "node-backend/src/services/XmlParserService.ts",
+          "hash": "14078031715070504598"
+        },
+        {
+          "file": "node-backend/src/services/factories.ts",
+          "hash": "12476977218300823569"
+        },
+        {
+          "file": "node-backend/src/types/OrderModels.ts",
+          "hash": "17039330799379264711"
+        },
+        {
+          "file": "node-backend/src/types/index.ts",
+          "hash": "8996792799286904685"
+        },
+        {
+          "file": "node-backend/src/types/models.ts",
+          "hash": "9392556522709717088"
+        },
+        {
+          "file": "node-backend/src/types/services.ts",
+          "hash": "748350075005325063"
+        },
+        {
+          "file": "node-backend/src/worker/BlobPollingWorker.ts",
+          "hash": "2448468540652377642"
+        },
+        {
+          "file": "node-backend/src/worker/TransformationPipeline.ts",
+          "hash": "4489530556148239158"
+        },
+        {
+          "file": "node-backend/tests/FieldMappingService.test.ts",
+          "hash": "4744133621229729895"
+        },
+        {
+          "file": "node-backend/tests/OrderValidatorService.test.ts",
+          "hash": "4430157082145907373"
+        },
+        {
+          "file": "node-backend/tests/TestData/invalid-order.xml",
+          "hash": "11188959618795919214"
+        },
+        {
+          "file": "node-backend/tests/TestData/valid-order.xml",
+          "hash": "17445713146701925283"
+        },
+        {
+          "file": "node-backend/tests/XmlParserService.test.ts",
+          "hash": "12825777948192498513"
+        },
+        {
+          "file": "node-backend/tsconfig.json",
+          "hash": "12623290030314295340"
+        },
+        {
+          "file": "node-backend/vitest.config.ts",
+          "hash": "1541461146030890913"
+        }
+      ],
+      "frontend": [
+        {
+          "file": "ui/.gitignore",
+          "hash": "13046175384202504187"
+        },
+        {
+          "file": "ui/eslint.config.js",
+          "hash": "16942999842498204"
+        },
+        {
+          "file": "ui/index.html",
+          "hash": "9671866848808972429"
+        },
+        {
+          "file": "ui/package.json",
+          "hash": "9614936171422584387"
+        },
+        {
+          "file": "ui/pnpm-lock.yaml",
+          "hash": "14313147493094138959"
+        },
+        {
+          "file": "ui/postcss.config.js",
+          "hash": "4631510165019039209"
+        },
+        {
+          "file": "ui/project.json",
+          "hash": "9747820758546710621"
+        },
+        {
+          "file": "ui/public/vite.svg",
+          "hash": "16046085400642193116"
+        },
+        {
+          "file": "ui/src/App.tsx",
+          "hash": "2262212065215228486"
+        },
+        {
+          "file": "ui/src/api/client.ts",
+          "hash": "15828145637322858376"
+        },
+        {
+          "file": "ui/src/components/BatchCard.tsx",
+          "hash": "7715622230578230052"
+        },
+        {
+          "file": "ui/src/components/ErrorList.tsx",
+          "hash": "7777306854210629016"
+        },
+        {
+          "file": "ui/src/components/FileUpload.tsx",
+          "hash": "15578154797798758915"
+        },
+        {
+          "file": "ui/src/components/Layout.tsx",
+          "hash": "7220960485958914648"
+        },
+        {
+          "file": "ui/src/components/LoadingSpinner.tsx",
+          "hash": "14241519979190462740"
+        },
+        {
+          "file": "ui/src/components/OrderTable.tsx",
+          "hash": "1190962054027582724"
+        },
+        {
+          "file": "ui/src/components/ProcessingStatus.tsx",
+          "hash": "7255773905340737037"
+        },
+        {
+          "file": "ui/src/components/StatCard.tsx",
+          "hash": "17581117460159661521"
+        },
+        {
+          "file": "ui/src/components/StatusBadge.tsx",
+          "hash": "3235920594988061486"
+        },
+        {
+          "file": "ui/src/hooks/useProcessingStatus.ts",
+          "hash": "14533516622482570216"
+        },
+        {
+          "file": "ui/src/index.css",
+          "hash": "2865746245583658242"
+        },
+        {
+          "file": "ui/src/main.tsx",
+          "hash": "11038211546439381838"
+        },
+        {
+          "file": "ui/src/pages/DashboardPage.tsx",
+          "hash": "2534105534947483665"
+        },
+        {
+          "file": "ui/src/pages/OrderDetailPage.tsx",
+          "hash": "6997895293958224017"
+        },
+        {
+          "file": "ui/src/pages/UploadPage.tsx",
+          "hash": "5739966655191091487"
+        },
+        {
+          "file": "ui/src/types/api.ts",
+          "hash": "13788847059465962323"
+        },
+        {
+          "file": "ui/tailwind.config.js",
+          "hash": "4536431498800774481"
+        },
+        {
+          "file": "ui/tsconfig.app.json",
+          "hash": "5465718486149434459"
+        },
+        {
+          "file": "ui/tsconfig.json",
+          "hash": "2365188958523842680"
+        },
+        {
+          "file": "ui/tsconfig.node.json",
+          "hash": "11862655124761714159"
+        },
+        {
+          "file": "ui/vite.config.ts",
+          "hash": "1168161150747685803"
+        }
+      ]
+    }
+  },
+  "externalNodesHash": "3215905104420204285"
+}

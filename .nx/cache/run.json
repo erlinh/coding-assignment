@@ -1,0 +1,32 @@
+{
+  "run": {
+    "command": "nx run-many -t dev --parallel",
+    "startTime": "2026-04-23T18:49:06.981Z",
+    "endTime": "2026-04-23T18:49:11.657Z",
+    "inner": false
+  },
+  "tasks": [
+    {
+      "taskId": "frontend:dev",
+      "target": "dev",
+      "projectName": "frontend",
+      "hash": "5655832210473048945",
+      "startTime": "2026-04-23T18:49:06.988Z",
+      "endTime": "2026-04-23T18:49:11.654Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 1
+    },
+    {
+      "taskId": "backend:dev",
+      "target": "dev",
+      "projectName": "backend",
+      "hash": "15944520368702823117",
+      "startTime": "2026-04-23T18:49:06.988Z",
+      "endTime": "2026-04-23T18:49:11.654Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 1
+    }
+  ]
+}

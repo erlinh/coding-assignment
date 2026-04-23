@@ -1,0 +1,76 @@
+> node dist/index.js
+
+{"level":30,"time":1776968590928,"pid":74831,"hostname":"erlin-XPS-17-9710","msg":"Server listening at http://0.0.0.0:5000"}
+Server listening at http://0.0.0.0:5000
+Starting BlobPollingWorker with interval 5000ms
+{"level":30,"time":1776968593986,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-1","req":{"method":"GET","url":"/api/orders","hostname":"localhost:5000","remoteAddress":"127.0.0.1","remotePort":56510},"msg":"incoming request"}
+{"level":30,"time":1776968593989,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-2","req":{"method":"GET","url":"/api/orders/stats","hostname":"localhost:5000","remoteAddress":"127.0.0.1","remotePort":56524},"msg":"incoming request"}
+{"level":30,"time":1776968594008,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-1","res":{"statusCode":200},"responseTime":21.254814000800252,"msg":"request completed"}
+{"level":30,"time":1776968594009,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-2","res":{"statusCode":200},"responseTime":20.248072000220418,"msg":"request completed"}
+{"level":30,"time":1776968594011,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-3","req":{"method":"GET","url":"/api/orders","hostname":"localhost:5000","remoteAddress":"127.0.0.1","remotePort":56528},"msg":"incoming request"}
+{"level":30,"time":1776968594012,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-4","req":{"method":"GET","url":"/api/orders/stats","hostname":"localhost:5000","remoteAddress":"127.0.0.1","remotePort":56542},"msg":"incoming request"}
+{"level":30,"time":1776968594021,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-3","res":{"statusCode":200},"responseTime":9.525676000863314,"msg":"request completed"}
+{"level":30,"time":1776968594023,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-4","res":{"statusCode":200},"responseTime":10.49859300069511,"msg":"request completed"}
+{"level":30,"time":1776968605271,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-5","req":{"method":"GET","url":"/api/orders","hostname":"localhost:5000","remoteAddress":"127.0.0.1","remotePort":42246},"msg":"incoming request"}
+{"level":30,"time":1776968605273,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-6","req":{"method":"GET","url":"/api/orders/stats","hostname":"localhost:5000","remoteAddress":"127.0.0.1","remotePort":42260},"msg":"incoming request"}
+{"level":30,"time":1776968605275,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-7","req":{"method":"GET","url":"/api/orders","hostname":"localhost:5000","remoteAddress":"127.0.0.1","remotePort":42268},"msg":"incoming request"}
+{"level":30,"time":1776968605276,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-8","req":{"method":"GET","url":"/api/orders/stats","hostname":"localhost:5000","remoteAddress":"127.0.0.1","remotePort":42284},"msg":"incoming request"}
+{"level":30,"time":1776968605293,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-5","res":{"statusCode":200},"responseTime":21.607129998505116,"msg":"request completed"}
+{"level":30,"time":1776968605294,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-6","res":{"statusCode":200},"responseTime":20.79845399968326,"msg":"request completed"}
+{"level":30,"time":1776968605296,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-8","res":{"statusCode":200},"responseTime":19.353674000129104,"msg":"request completed"}
+{"level":30,"time":1776968605296,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-7","res":{"statusCode":200},"responseTime":21.123536998406053,"msg":"request completed"}
+{"level":30,"time":1776968609527,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-9","req":{"method":"GET","url":"/api/orders/order-batch-001.xml.json","hostname":"localhost:5000","remoteAddress":"127.0.0.1","remotePort":42288},"msg":"incoming request"}
+{"level":30,"time":1776968609527,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-9","msg":"Route GET:/api/orders/order-batch-001.xml.json not found"}
+{"level":30,"time":1776968609527,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-9","res":{"statusCode":404},"responseTime":0.7607319988310337,"msg":"request completed"}
+{"level":30,"time":1776968609528,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-a","req":{"method":"GET","url":"/api/orders/order-batch-001.xml.json","hostname":"localhost:5000","remoteAddress":"127.0.0.1","remotePort":42290},"msg":"incoming request"}
+{"level":30,"time":1776968609528,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-a","msg":"Route GET:/api/orders/order-batch-001.xml.json not found"}
+{"level":30,"time":1776968609528,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-a","res":{"statusCode":404},"responseTime":0.2532839998602867,"msg":"request completed"}
+{"level":30,"time":1776968618973,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-b","req":{"method":"GET","url":"/api/orders","hostname":"localhost:5000","remoteAddress":"127.0.0.1","remotePort":49396},"msg":"incoming request"}
+{"level":30,"time":1776968618975,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-c","req":{"method":"GET","url":"/api/orders/stats","hostname":"localhost:5000","remoteAddress":"127.0.0.1","remotePort":49406},"msg":"incoming request"}
+{"level":30,"time":1776968618988,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-b","res":{"statusCode":200},"responseTime":14.175518998876214,"msg":"request completed"}
+{"level":30,"time":1776968618989,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-c","res":{"statusCode":200},"responseTime":13.968984998762608,"msg":"request completed"}
+{"level":30,"time":1776968619016,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-d","req":{"method":"GET","url":"/api/orders","hostname":"localhost:5000","remoteAddress":"127.0.0.1","remotePort":49408},"msg":"incoming request"}
+{"level":30,"time":1776968619017,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-e","req":{"method":"GET","url":"/api/orders/stats","hostname":"localhost:5000","remoteAddress":"127.0.0.1","remotePort":49418},"msg":"incoming request"}
+{"level":30,"time":1776968619026,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-d","res":{"statusCode":200},"responseTime":10.466233000159264,"msg":"request completed"}
+{"level":30,"time":1776968619029,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-e","res":{"statusCode":200},"responseTime":12.39131100103259,"msg":"request completed"}
+{"level":30,"time":1776968620065,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-f","req":{"method":"GET","url":"/api/orders/order-batch-001.xml.json","hostname":"localhost:5000","remoteAddress":"127.0.0.1","remotePort":49428},"msg":"incoming request"}
+{"level":30,"time":1776968620065,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-f","msg":"Route GET:/api/orders/order-batch-001.xml.json not found"}
+{"level":30,"time":1776968620066,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-f","res":{"statusCode":404},"responseTime":0.5391849987208843,"msg":"request completed"}
+{"level":30,"time":1776968620066,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-g","req":{"method":"GET","url":"/api/orders/order-batch-001.xml.json","hostname":"localhost:5000","remoteAddress":"127.0.0.1","remotePort":49432},"msg":"incoming request"}
+{"level":30,"time":1776968620066,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-g","msg":"Route GET:/api/orders/order-batch-001.xml.json not found"}
+{"level":30,"time":1776968620066,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-g","res":{"statusCode":404},"responseTime":0.14784500002861023,"msg":"request completed"}
+{"level":30,"time":1776968626595,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-h","req":{"method":"GET","url":"/api/orders","hostname":"localhost:5000","remoteAddress":"127.0.0.1","remotePort":58580},"msg":"incoming request"}
+{"level":30,"time":1776968626596,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-i","req":{"method":"GET","url":"/api/orders/stats","hostname":"localhost:5000","remoteAddress":"127.0.0.1","remotePort":58584},"msg":"incoming request"}
+{"level":30,"time":1776968626612,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-h","res":{"statusCode":200},"responseTime":16.676401000469923,"msg":"request completed"}
+{"level":30,"time":1776968626614,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-i","res":{"statusCode":200},"responseTime":17.59484300017357,"msg":"request completed"}
+{"level":30,"time":1776968626622,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-j","req":{"method":"GET","url":"/api/orders","hostname":"localhost:5000","remoteAddress":"127.0.0.1","remotePort":58600},"msg":"incoming request"}
+{"level":30,"time":1776968626623,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-k","req":{"method":"GET","url":"/api/orders/stats","hostname":"localhost:5000","remoteAddress":"127.0.0.1","remotePort":58604},"msg":"incoming request"}
+{"level":30,"time":1776968626636,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-j","res":{"statusCode":200},"responseTime":13.884708000347018,"msg":"request completed"}
+{"level":30,"time":1776968626637,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-k","res":{"statusCode":200},"responseTime":14.18868499994278,"msg":"request completed"}
+{"level":30,"time":1776968658086,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-l","req":{"method":"GET","url":"/docs/static/index.html","hostname":"localhost:5000","remoteAddress":"127.0.0.1","remotePort":53804},"msg":"incoming request"}
+{"level":30,"time":1776968658087,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-l","res":{"statusCode":200},"responseTime":0.8192940000444651,"msg":"request completed"}
+{"level":30,"time":1776968658125,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-m","req":{"method":"GET","url":"/docs/static/swagger-ui.css","hostname":"localhost:5000","remoteAddress":"127.0.0.1","remotePort":53804},"msg":"incoming request"}
+{"level":30,"time":1776968658128,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-m","res":{"statusCode":304},"responseTime":2.736701998859644,"msg":"request completed"}
+{"level":30,"time":1776968658128,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-n","req":{"method":"GET","url":"/docs/static/index.css","hostname":"localhost:5000","remoteAddress":"127.0.0.1","remotePort":53816},"msg":"incoming request"}
+{"level":30,"time":1776968658128,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-o","req":{"method":"GET","url":"/docs/static/swagger-ui-bundle.js","hostname":"localhost:5000","remoteAddress":"127.0.0.1","remotePort":53820},"msg":"incoming request"}
+{"level":30,"time":1776968658129,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-n","res":{"statusCode":304},"responseTime":1.0905379988253117,"msg":"request completed"}
+{"level":30,"time":1776968658129,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-o","res":{"statusCode":304},"responseTime":0.8241120018064976,"msg":"request completed"}
+{"level":30,"time":1776968658129,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-p","req":{"method":"GET","url":"/docs/static/swagger-ui-standalone-preset.js","hostname":"localhost:5000","remoteAddress":"127.0.0.1","remotePort":53828},"msg":"incoming request"}
+{"level":30,"time":1776968658130,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-q","req":{"method":"GET","url":"/docs/static/swagger-initializer.js","hostname":"localhost:5000","remoteAddress":"127.0.0.1","remotePort":53832},"msg":"incoming request"}
+{"level":30,"time":1776968658130,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-q","res":{"statusCode":200},"responseTime":0.2331559993326664,"msg":"request completed"}
+{"level":30,"time":1776968658130,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-p","res":{"statusCode":304},"responseTime":0.6561709996312857,"msg":"request completed"}
+{"level":30,"time":1776968658323,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-r","req":{"method":"GET","url":"/docs/json","hostname":"localhost:5000","remoteAddress":"127.0.0.1","remotePort":53832},"msg":"incoming request"}
+{"level":30,"time":1776968658328,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-r","res":{"statusCode":200},"responseTime":4.22066199965775,"msg":"request completed"}
+{"level":30,"time":1776968761220,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-s","req":{"method":"GET","url":"/api/orders","hostname":"localhost:5000","remoteAddress":"127.0.0.1","remotePort":37166},"msg":"incoming request"}
+{"level":30,"time":1776968761240,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-s","res":{"statusCode":200},"responseTime":19.160048000514507,"msg":"request completed"}
+{"level":30,"time":1776968761250,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-t","req":{"method":"GET","url":"/api/orders/order-batch-001.xml.json","hostname":"localhost:5000","remoteAddress":"127.0.0.1","remotePort":37180},"msg":"incoming request"}
+{"level":30,"time":1776968761251,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-t","msg":"Route GET:/api/orders/order-batch-001.xml.json not found"}
+{"level":30,"time":1776968761251,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-t","res":{"statusCode":404},"responseTime":0.4796339999884367,"msg":"request completed"}
+{"level":30,"time":1776968815968,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-u","req":{"method":"GET","url":"/api/orders","hostname":"localhost:5000","remoteAddress":"127.0.0.1","remotePort":35992},"msg":"incoming request"}
+{"level":30,"time":1776968815969,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-v","req":{"method":"GET","url":"/api/orders/stats","hostname":"localhost:5000","remoteAddress":"127.0.0.1","remotePort":36004},"msg":"incoming request"}
+{"level":30,"time":1776968815979,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-u","res":{"statusCode":200},"responseTime":10.767397999763489,"msg":"request completed"}
+{"level":30,"time":1776968815983,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-v","res":{"statusCode":200},"responseTime":14.307081999257207,"msg":"request completed"}
+{"level":30,"time":1776968815988,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-w","req":{"method":"GET","url":"/api/orders","hostname":"localhost:5000","remoteAddress":"127.0.0.1","remotePort":36020},"msg":"incoming request"}
+{"level":30,"time":1776968815989,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-x","req":{"method":"GET","url":"/api/orders/stats","hostname":"localhost:5000","remoteAddress":"127.0.0.1","remotePort":36036},"msg":"incoming request"}
+{"level":30,"time":1776968816000,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-w","res":{"statusCode":200},"responseTime":11.886800000444055,"msg":"request completed"}
+{"level":30,"time":1776968816002,"pid":74831,"hostname":"erlin-XPS-17-9710","reqId":"req-x","res":{"statusCode":200},"responseTime":12.827573999762535,"msg":"request completed"}
