@@ -23,7 +23,7 @@ public class BlobStorageService : IBlobStorageService
     public async Task<List<string>> ListBlobsAsync(string prefix)
     {
         var blobs = new List<string>();
-        await foreach (BlobItem blob in _containerClient.GetBlobsAsync(prefix: prefix))
+        await foreach (BlobItem blob in _containerClient.GetBlobsAsync(BlobTraits.None, BlobStates.None, prefix, CancellationToken.None))
         {
             blobs.Add(blob.Name);
         }
