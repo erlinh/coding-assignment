@@ -1,0 +1,1 @@
+{"version":3,"file":"FieldMappingService.d.ts","sourceRoot":"","sources":["../../src/services/FieldMappingService.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,UAAU,EAAoB,MAAM,oBAAoB,CAAC;AACvE,OAAO,KAAK,EAAE,oBAAoB,EAAE,MAAM,sBAAsB,CAAC;AA2BjE,qBAAa,mBAAoB,YAAW,oBAAoB;IAC9D,SAAS,CAAC,KAAK,EAAE,UAAU,GAAG,UAAU;IAKxC,OAAO,CAAC,QAAQ;IAgBhB,OAAO,CAAC,OAAO;CAOhB"}
