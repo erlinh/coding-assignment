@@ -10,8 +10,8 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@azure/storage-blob": "^12.17.0",
-    "@fastify/multipart": "^10.0.0",
+    "@azure/storage-blob": "^12.15.0",
+    "@fastify/multipart": "^8.3.1",
     "fast-xml-parser": "^4.3.4",
     "fastify": "^4.26.0",
     "pino": "^8.19.0"
