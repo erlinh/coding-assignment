@@ -99,10 +99,12 @@ export class XmlParserService implements IXmlParserService {
   }
 
   private parseOrder(orderElement: XmlOrder): Order {
+    const itemsData = orderElement.items?.item;
+    const itemsArray = Array.isArray(itemsData) ? itemsData : itemsData ? [itemsData] : [];
     return {
       header: this.parseHeader(orderElement.header),
       customer: this.parseCustomer(orderElement.customer),
-      items: (orderElement.items.item ?? []).map((item) => this.parseItem(item)),
+      items: itemsArray.map((item) => this.parseItem(item)),
       totals: this.parseTotals(orderElement.totals),
     };
   }

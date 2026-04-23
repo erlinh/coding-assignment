@@ -41,3 +41,4 @@ src/OrderTransformer/wwwroot/
 
 .evaluation/
 ui/node_modules/
+ui/package-lock.json
