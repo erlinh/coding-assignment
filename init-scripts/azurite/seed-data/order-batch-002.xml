@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<orders xmlns="http://example.com/schemas/order/v1">
+    <tenantId>tenant-y</tenantId>
+    <order>
+        <header>
+            <orderId>ORD-2024-002001</orderId>
+            <orderDate>2024-02-10T09:00:00Z</orderDate>
+            <status>confirmed</status>
+        </header>
+        <customer>
+            <customerId>CUST-1001</customerId>
+            <name>Nordic Solutions AB</name>
+            <email>orders@nordicsolutions.se</email>
+            <address>
+                <street>55 Kungsgatan</street>
+                <city>Stockholm</city>
+                <postalCode>111 43</postalCode>
+                <country>SE</country>
+            </address>
+        </customer>
+        <items>
+            <item>
+                <lineNumber>1</lineNumber>
+                <productCode>PROD-001</productCode>
+                <description>Widget Pro</description>
+                <quantity>20</quantity>
+                <unitPrice>29.99</unitPrice>
+                <currency>SEK</currency>
+            </item>
+            <item>
+                <lineNumber>2</lineNumber>
+                <productCode>PROD-002</productCode>
+                <description>Gadget Standard</description>
+                <quantity>15</quantity>
+                <unitPrice>49.99</unitPrice>
+                <currency>SEK</currency>
+            </item>
+        </items>
+        <totals>
+            <subtotal>1049.75</subtotal>
+            <taxRate>25</taxRate>
+            <taxAmount>262.44</taxAmount>
+            <total>1312.19</total>
+            <currency>SEK</currency>
+        </totals>
+    </order>
+    <order>
+        <header>
+            <orderId>ORD-2024-002002</orderId>
+            <orderDate>2024-02-10T11:30:00Z</orderDate>
+            <status>shipped</status>
+        </header>
+        <customer>
+            <customerId>CUST-1002</customerId>
+            <name>Oslo Trading AS</name>
+            <email>procurement@oslotrading.no</email>
+            <address>
+                <street>12 Aker Brygge</street>
+                <city>Oslo</city>
+                <postalCode>0150</postalCode>
+                <country>NO</country>
+            </address>
+        </customer>
+        <items>
+            <item>
+                <lineNumber>1</lineNumber>
+                <productCode>PROD-003</productCode>
+                <description>Premium Widgets</description>
+                <quantity>8</quantity>
+                <unitPrice>99.99</unitPrice>
+                <currency>NOK</currency>
+            </item>
+        </items>
+        <totals>
+            <subtotal>799.92</subtotal>
+            <taxRate>25</taxRate>
+            <taxAmount>199.98</taxAmount>
+            <total>999.90</total>
+            <currency>NOK</currency>
+        </totals>
+    </order>
+</orders>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<orders xmlns="http://example.com/schemas/order/v1">
+    <tenantId>tenant-z</tenantId>
+    <order>
+        <header>
+            <orderId>ORD-2024-003001</orderId>
+            <orderDate>2024-03-05T14:00:00Z</orderDate>
+            <status>processing</status>
+        </header>
+        <customer>
+            <customerId>CUST-2001</customerId>
+            <name>Atlantic Imports Ltd</name>
+            <email>sales@atlanticimports.co.uk</email>
+            <address>
+                <street>100 Commerce Street</street>
+                <city>London</city>
+                <postalCode>EC2M 5TB</postalCode>
+                <country>GB</country>
+            </address>
+        </customer>
+        <items>
+            <item>
+                <lineNumber>1</lineNumber>
+                <productCode>PROD-001</productCode>
+                <description>Widget Pro</description>
+                <quantity>50</quantity>
+                <unitPrice>24.99</unitPrice>
+                <currency>GBP</currency>
+            </item>
+            <item>
+                <lineNumber>2</lineNumber>
+                <productCode>PROD-002</productCode>
+                <description>Gadget Standard</description>
+                <quantity>25</quantity>
+                <unitPrice>39.99</unitPrice>
+                <currency>GBP</currency>
+            </item>
+            <item>
+                <lineNumber>3</lineNumber>
+                <productCode>PROD-003</productCode>
+                <description>Premium Widgets</description>
+                <quantity>10</quantity>
+                <unitPrice>89.99</unitPrice>
+                <currency>GBP</currency>
+            </item>
+        </items>
+        <totals>
+            <subtotal>2773.40</subtotal>
+            <taxRate>20</taxRate>
+            <taxAmount>554.68</taxAmount>
+            <total>3328.08</total>
+            <currency>GBP</currency>
+        </totals>
+    </order>
+</orders>

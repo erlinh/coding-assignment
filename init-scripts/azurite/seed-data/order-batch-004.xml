@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<orders xmlns="http://example.com/schemas/order/v1">
+    <tenantId>tenant-x</tenantId>
+    <order>
+        <header>
+            <orderId>ORD-2024-004001</orderId>
+            <orderDate>2024-04-12T08:15:00Z</orderDate>
+            <status>draft</status>
+        </header>
+        <customer>
+            <customerId>CUST-3001</customerId>
+            <name>Berlin Tech GmbH</name>
+            <email>bestellung@berlintech.de</email>
+            <address>
+                <street>Unter den Linden 42</street>
+                <city>Berlin</city>
+                <postalCode>10117</postalCode>
+                <country>DE</country>
+            </address>
+        </customer>
+        <items>
+            <item>
+                <lineNumber>1</lineNumber>
+                <productCode>PROD-001</productCode>
+                <description>Widget Pro</description>
+                <quantity>100</quantity>
+                <unitPrice>19.99</unitPrice>
+                <currency>EUR</currency>
+            </item>
+            <item>
+                <lineNumber>2</lineNumber>
+                <productCode>PROD-002</productCode>
+                <description>Gadget Standard</description>
+                <quantity>75</quantity>
+                <unitPrice>34.99</unitPrice>
+                <currency>EUR</currency>
+            </item>
+        </items>
+        <totals>
+            <subtotal>3623.25</subtotal>
+            <taxRate>19</taxRate>
+            <taxAmount>688.42</taxAmount>
+            <total>4311.67</total>
+            <currency>EUR</currency>
+        </totals>
+    </order>
+    <order>
+        <header>
+            <orderId>ORD-2024-004002</orderId>
+            <orderDate>2024-04-12T16:45:00Z</orderDate>
+            <status>delivered</status>
+        </header>
+        <customer>
+            <customerId>CUST-3002</customerId>
+            <name>Munchen Wholesale</name>
+            <email>orders@muenchenwholesale.de</email>
+            <address>
+                <street>Marienplatz 8</street>
+                <city>Munchen</city>
+                <postalCode>80331</postalCode>
+                <country>DE</country>
+            </address>
+        </customer>
+        <items>
+            <item>
+                <lineNumber>1</lineNumber>
+                <productCode>PROD-003</productCode>
+                <description>Premium Widgets</description>
+                <quantity>30</quantity>
+                <unitPrice>79.99</unitPrice>
+                <currency>EUR</currency>
+            </item>
+        </items>
+        <totals>
+            <subtotal>2399.70</subtotal>
+            <taxRate>19</taxRate>
+            <taxAmount>455.94</taxAmount>
+            <total>2855.64</total>
+            <currency>EUR</currency>
+        </totals>
+    </order>
+</orders>

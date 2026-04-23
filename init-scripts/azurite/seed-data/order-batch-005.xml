@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<orders xmlns="http://example.com/schemas/order/v1">
+    <tenantId>tenant-y</tenantId>
+    <order>
+        <header>
+            <orderId>ORD-2024-005001</orderId>
+            <orderDate>2024-05-20T10:00:00Z</orderDate>
+            <status>cancelled</status>
+        </header>
+        <customer>
+            <customerId>CUST-4001</customerId>
+            <name>New York Distributors Inc</name>
+            <email>purchase@nycdist.com</email>
+            <address>
+                <street>350 Fifth Avenue</street>
+                <city>New York</city>
+                <postalCode>NY 10118</postalCode>
+                <country>US</country>
+            </address>
+        </customer>
+        <items>
+            <item>
+                <lineNumber>1</lineNumber>
+                <productCode>PROD-001</productCode>
+                <description>Widget Pro</description>
+                <quantity>200</quantity>
+                <unitPrice>14.99</unitPrice>
+                <currency>USD</currency>
+            </item>
+            <item>
+                <lineNumber>2</lineNumber>
+                <productCode>PROD-002</productCode>
+                <description>Gadget Standard</description>
+                <quantity>150</quantity>
+                <unitPrice>24.99</unitPrice>
+                <currency>USD</currency>
+            </item>
+            <item>
+                <lineNumber>3</lineNumber>
+                <productCode>PROD-003</productCode>
+                <description>Premium Widgets</description>
+                <quantity>50</quantity>
+                <unitPrice>59.99</unitPrice>
+                <currency>USD</currency>
+            </item>
+        </items>
+        <totals>
+            <subtotal>8748.50</subtotal>
+            <taxRate>8.875</taxRate>
+            <taxAmount>776.68</taxAmount>
+            <total>9525.18</total>
+            <currency>USD</currency>
+        </totals>
+    </order>
+</orders>

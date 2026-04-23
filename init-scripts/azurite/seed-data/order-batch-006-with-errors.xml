@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<orders xmlns="http://example.com/schemas/order/v1">
+    <tenantId>tenant-z</tenantId>
+    <order>
+        <header>
+            <orderId>INVALID-ID</orderId>
+            <orderDate>2024-06-01T09:00:00Z</orderDate>
+            <status>unknown_status</status>
+        </header>
+        <customer>
+            <customerId>CUST-5001</customerId>
+            <name>Test Company Ltd</name>
+            <email>invalid-email</email>
+            <address>
+                <street>999 Invalid Street</street>
+                <city>Nowhere City</city>
+                <postalCode>INVALID</postalCode>
+                <country>XX</country>
+            </address>
+        </customer>
+        <items>
+            <item>
+                <lineNumber>1</lineNumber>
+                <productCode>INVALID-PROD</productCode>
+                <description>Bad Product</description>
+                <quantity>-5</quantity>
+                <unitPrice>-10.00</unitPrice>
+                <currency>INVALID</currency>
+            </item>
+        </items>
+        <totals>
+            <subtotal>-50.00</subtotal>
+            <taxRate>0</taxRate>
+            <taxAmount>-10.00</taxAmount>
+            <total>-60.00</total>
+            <currency>INVALID</currency>
+        </totals>
+    </order>
+    <order>
+        <header>
+            <orderId>ORD-2024-006002</orderId>
+            <orderDate>2024-06-01T09:30:00Z</orderDate>
+            <status>processing</status>
+        </header>
+        <customer>
+            <customerId>CUST-5002</customerId>
+            <name>This is a valid order</name>
+            <email>valid@email.com</email>
+            <address>
+                <street>123 Valid Street</street>
+                <city>Valid City</city>
+                <postalCode>12345</postalCode>
+                <country>FI</country>
+            </address>
+        </customer>
+        <items>
+            <item>
+                <lineNumber>1</lineNumber>
+                <productCode>PROD-001</productCode>
+                <description>Widget Pro</description>
+                <quantity>5</quantity>
+                <unitPrice>29.99</unitPrice>
+                <currency>EUR</currency>
+            </item>
+        </items>
+        <totals>
+            <subtotal>149.95</subtotal>
+            <taxRate>24</taxRate>
+            <taxAmount>35.99</taxAmount>
+            <total>185.94</total>
+            <currency>EUR</currency>
+        </totals>
+    </order>
+</orders>
