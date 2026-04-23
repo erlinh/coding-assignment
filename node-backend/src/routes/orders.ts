@@ -139,6 +139,29 @@ export async function registerOrderRoutes(
     };
   });
 
+  fastify.get("/api/orders", listOrdersSchema, async () => {
+    const allBlobs = await blobService.listBlobs("");
+    const outputBlobs = allBlobs.filter(
+      (b) => b.name.startsWith(outputPrefix) && b.name.endsWith(".json")
+    );
+
+    const summaries: OrderBatchSummary[] = [];
+
+    for (const blob of outputBlobs) {
+      const content = await blobService.downloadBlob(blob.name);
+      const data = JSON.parse(content);
+      summaries.push({
+        blobName: blob.name.replace(outputPrefix, ""),
+        tenantId: data.tenantId || "",
+        orderCount: data.orderCount || 0,
+        processedAt: data.processedAt || "",
+        validationErrorCount: data.validationErrorCount || 0,
+      });
+    }
+
+    return summaries;
+  });
+
   fastify.get("/api/orders/", listOrdersSchema, async () => {
     const allBlobs = await blobService.listBlobs("");
     const outputBlobs = allBlobs.filter(
