@@ -74,7 +74,7 @@ Wire the status tracking into the upload page:
 
 | File | What to Implement |
 |------|-------------------|
-| `src/OrderTransformer/Api/StatusEndpoints.cs` | Status checking logic (check prefixes in blob storage) |
+| `node-backend/src/routes/status.ts` | Status checking logic (check prefixes in blob storage) |
 | `ui/src/api/client.ts` | `getStatus(fileName)` function |
 | `ui/src/hooks/useProcessingStatus.ts` | Polling hook with useEffect and setInterval |
 | `ui/src/components/ProcessingStatus.tsx` | Status display component with all states |

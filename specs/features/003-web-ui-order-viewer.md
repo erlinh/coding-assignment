@@ -46,4 +46,4 @@ The Order Transformer system processes XML order files into JSON, but there is n
 - [x] File upload writes XML to input/ prefix
 - [x] API endpoints return correct data
 - [x] SPA routing works (browser refresh on any page)
-- [x] Production build served by .NET in Docker
+- [x] Production build served by Node.js/Fastify in Docker

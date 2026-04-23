@@ -1,15 +1,15 @@
 # Testing Agent
 
-You are helping write unit tests for the OrderTransformer .NET project.
+You are helping write unit tests for the OrderTransformer Node.js/Fastify project.
 
 ## Testing Framework
-- **xUnit** with `[Fact]` for single cases and `[Theory]` with `[InlineData]` for parameterized tests
+- **Vitest** with `describe`, `it`, `expect`
 - **Arrange-Act-Assert** pattern
-- Tests are in `tests/OrderTransformer.Tests/`
+- Tests are in `node-backend/tests/`
 
 ## What Needs Testing
 
-### 1. OrderValidatorServiceTests (`tests/OrderTransformer.Tests/Services/OrderValidatorServiceTests.cs`)
+### 1. OrderValidatorService Tests
 Write tests for each validation rule:
 - Valid order batch returns no errors
 - Missing required fields (orderId, customerId, name, email) each produce an error
@@ -20,7 +20,7 @@ Write tests for each validation rule:
 - Zero or negative quantity produces RANGE error
 - Negative price produces RANGE error
 
-### 2. FieldMappingServiceTests (`tests/OrderTransformer.Tests/Services/FieldMappingServiceTests.cs`)
+### 2. FieldMappingService Tests
 Write tests for each mapping:
 - Country code "FI" maps to "Finland"
 - Country code "SE" maps to "Sweden"
@@ -31,34 +31,27 @@ Write tests for each mapping:
 - Multiple orders in a batch are all mapped
 
 ## Test Data Helper
-Create test OrderBatch objects using C# record constructors. Example pattern from existing tests:
+Create test OrderBatch objects using plain JavaScript objects. Example pattern:
 
-```csharp
-private static OrderBatch CreateValidBatch() => new()
-{
-    TenantId = "test-tenant",
-    Orders = new List<Order>
-    {
-        new()
-        {
-            Header = new OrderHeader { OrderId = "ORD-2024-001234", OrderDate = "2024-01-15T10:30:00Z", Status = "confirmed" },
-            Customer = new Customer { CustomerId = "CUST-001", Name = "Test Corp", Email = "test@example.com",
-                Address = new Address { Street = "123 Test St", City = "Helsinki", PostalCode = "00100", Country = "FI" } },
-            Items = new List<OrderItem> { new() { LineNumber = 1, ProductCode = "PROD-001", Description = "Widget", Quantity = 10, UnitPrice = 29.99m, Currency = "EUR" } },
-            Totals = new OrderTotals { Subtotal = 299.90m, TaxRate = 24m, TaxAmount = 71.98m, Total = 371.88m, Currency = "EUR" }
-        }
-    }
-};
+```typescript
+const createValidBatch = (): OrderBatch => ({
+  tenantId: "test-tenant",
+  orders: [{
+    header: { orderId: "ORD-2024-001234", orderDate: "2024-01-15T10:30:00Z", status: "confirmed" },
+    customer: { customerId: "CUST-001", name: "Test Corp", email: "test@example.com",
+      address: { street: "123 Test St", city: "Helsinki", postalCode: "00100", country: "FI" } },
+    items: [{ lineNumber: 1, productCode: "PROD-001", description: "Widget", quantity: 10, unitPrice: 29.99, currency: "EUR" }],
+    totals: { subtotal: 299.90, taxRate: 24, taxAmount: 71.98, total: 371.88, currency: "EUR" }
+  }]
+});
 ```
 
 ## Reference
 Look at existing tests for patterns:
-- `tests/OrderTransformer.Tests/Services/XmlParserServiceTests.cs`
-- `tests/OrderTransformer.Tests/Services/JsonTransformerServiceTests.cs`
+- `node-backend/tests/services/XmlParserService.test.ts`
+- `node-backend/tests/services/JsonTransformerService.test.ts`
 
 ## Commands
 ```bash
-dotnet test tests/OrderTransformer.Tests --verbosity normal
-dotnet test tests/OrderTransformer.Tests --filter "FullyQualifiedName~OrderValidator"
-dotnet test tests/OrderTransformer.Tests --filter "FullyQualifiedName~FieldMapping"
+cd node-backend && npm test
 ```

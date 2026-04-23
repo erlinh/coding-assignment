@@ -1,18 +1,15 @@
 # Build Agent
 
-You are helping build, run, and verify the OrderTransformer .NET project.
+You are helping build, run, and verify the OrderTransformer Node.js/Fastify project.
 
 ## Build Commands
 
 ```bash
-# Build the main application
-dotnet build src/OrderTransformer
+# Build the TypeScript
+cd node-backend && npm run build
 
-# Build the test project
-dotnet test tests/OrderTransformer.Tests --no-run
-
-# Build both projects
-dotnet build src/OrderTransformer && dotnet build tests/OrderTransformer.Tests
+# Run tests
+cd node-backend && npm test
 ```
 
 ## Run Commands
@@ -24,33 +21,14 @@ docker compose up -d
 # Wait for initialization to complete
 docker compose logs azurite-init --follow
 
-# Run the application locally (connects to Azurite on localhost:10000)
-dotnet run --project src/OrderTransformer
+# Run both backend and frontend from root
+npm run dev
 
-# Run everything in Docker (including the app)
-docker compose --profile app up --build -d
+# Or run backend only
+cd node-backend && npm run dev
 
-# View app logs in Docker
-docker compose --profile app logs order-transformer --follow
-```
-
-## Test Commands
-
-```bash
-# Run all tests
-dotnet test tests/OrderTransformer.Tests
-
-# Run tests with detailed output
-dotnet test tests/OrderTransformer.Tests --verbosity normal
-
-# Run only validator tests
-dotnet test tests/OrderTransformer.Tests --filter "FullyQualifiedName~OrderValidator"
-
-# Run only mapping tests
-dotnet test tests/OrderTransformer.Tests --filter "FullyQualifiedName~FieldMapping"
-
-# Run only pipeline tests
-dotnet test tests/OrderTransformer.Tests --filter "FullyQualifiedName~Pipeline"
+# Run frontend only
+cd ui && pnpm dev
 ```
 
 ## Verify End-to-End
@@ -60,40 +38,27 @@ dotnet test tests/OrderTransformer.Tests --filter "FullyQualifiedName~Pipeline"
 docker compose up -d
 
 # 2. Run the app (will process the seed XML file)
-dotnet run --project src/OrderTransformer
+npm run dev
 
-# 3. Check that output was created in blob storage
-docker compose exec azurite-init az storage blob list \
-  --container-name orders \
-  --prefix output/ \
-  --connection-string "DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://localhost:10000/devstoreaccount1;" \
-  --output table
+# 3. Check API is responding
+curl http://localhost:5000/api/orders
 
-# 4. Download and inspect the JSON output
-docker compose exec azurite-init az storage blob download \
-  --container-name orders \
-  --name "output/order-batch-001.json" \
-  --connection-string "DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://localhost:10000/devstoreaccount1;" \
-  --file /dev/stdout 2>/dev/null
+# 4. Check stats
+curl http://localhost:5000/api/orders/stats
 ```
 
 ## Clean Up
 
 ```bash
 # Stop all containers
-docker compose --profile app down
+docker compose down
 
 # Stop and remove volumes
-docker compose --profile app down -v
-
-# Clean build artifacts
-dotnet clean src/OrderTransformer
-dotnet clean tests/OrderTransformer.Tests
+docker compose down -v
 ```
 
 ## Common Build Issues
 
-- **Package restore fails**: Run `dotnet restore src/OrderTransformer` explicitly
-- **Test discovery fails**: Ensure `using Xunit;` is present in test files
+- **TypeScript errors**: Run `cd node-backend && npm run build` to see details
 - **Azurite connection refused**: Ensure `docker compose up -d` has completed and Azurite is healthy
-- **Port conflict on 10000**: Stop other Azurite instances or change port in docker-compose.yml and appsettings.json
+- **Port conflict**: Stop other processes on ports 5000, 5173, 10000

@@ -90,10 +90,9 @@ The pipeline already has stub services wired in that currently do nothing:
 
 | File | What to Implement |
 |------|-------------------|
-| `src/OrderTransformer/Services/OrderValidatorService.cs` | Validation logic in the `Validate()` method |
-| `src/OrderTransformer/Services/FieldMappingService.cs` | Mapping logic in the `MapFields()` method |
-| `tests/OrderTransformer.Tests/Services/OrderValidatorServiceTests.cs` | Tests for each validation rule |
-| `tests/OrderTransformer.Tests/Services/FieldMappingServiceTests.cs` | Tests for each mapping |
+| `node-backend/src/services/OrderValidatorService.ts` | Validation logic in the `validate()` method |
+| `node-backend/src/services/FieldMappingService.ts` | Mapping logic in the `mapFields()` method |
+| `node-backend/tests/*.test.ts` | Tests for validation and mapping |
 
 The existing `TransformationPipeline` already calls these services in the correct order:
 ```
@@ -132,7 +131,7 @@ TransformationPipeline
 
 ### Mapping Strategy
 - Dictionary-based lookup? Configuration file? Constants?
-- How to update immutable records (C# `with` expressions)
+- How to update immutable data structures
 - Where in the pipeline does mapping happen relative to validation?
 
 ### Test Strategy

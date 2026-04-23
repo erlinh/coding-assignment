@@ -15,13 +15,13 @@ You are implementing features using the spec-driven development workflow.
 
 ```bash
 # Build
-dotnet build src/OrderTransformer
+cd node-backend && npm run build
 
 # Test
-dotnet test tests/OrderTransformer.Tests --verbosity normal
+cd node-backend && npm test
 
 # Run with infrastructure
-docker compose up -d && dotnet run --project src/OrderTransformer
+docker compose up -d && npm run dev
 ```
 
 ## Spec Locations

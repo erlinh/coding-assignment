@@ -1,4 +1,4 @@
-# Evaluation Rubric — .NET Coding Assessment
+# Evaluation Rubric — Coding Assessment
 
 ## Assessment Structure
 
@@ -60,7 +60,7 @@ The Tech Lead provides the candidate with the repo and says:
 |----------|--------------|------------|------------------|
 | **Validation implementation** | All rules implemented correctly, good regex patterns, clear error messages with proper ErrorCodes | Most rules work, minor regex issues or missing a rule | Few rules implemented, broken patterns, incomplete |
 | **Mapping implementation** | Clean dictionary-based approach, all three mappings work, unknown values handled, immutable updates correct | Mappings work, minor issues (e.g., doesn't handle unknown values) | Incomplete or broken mappings |
-| **Code quality** | Follows existing patterns, clean C#, good naming, consistent with codebase style | Readable code, minor style inconsistencies | Messy, inconsistent, doesn't follow existing patterns |
+| **Code quality** | Follows existing patterns, clean TypeScript, good naming, consistent with codebase style | Readable code, minor style inconsistencies | Messy, inconsistent, doesn't follow existing patterns |
 | **Test coverage** | Multiple test cases per rule, edge cases covered, uses `[Theory]` where appropriate | Tests exist for main paths, some gaps | Few tests, no edge cases, or tests don't work |
 | **AI tool usage** | Effective prompting, reviews AI output, catches/corrects errors, iterates intelligently | Uses AI productively, mostly effective | Doesn't use AI, or blindly copies without understanding |
 | **Working software** | App builds, all tests pass, end-to-end works (XML in → JSON out with validation + mapping) | Most things work, minor issues | Does not build or significant functionality broken |
@@ -77,7 +77,7 @@ For full-stack candidates. The Tech Lead says:
 > "Great work on the backend. Now let's add a user-facing feature. The React UI is already built — you can see it in the browser. When you upload an XML file, you get a success message but no way to know when processing finishes.
 >
 > Your task is to add **upload processing status tracking**:
-> 1. Backend: Implement the status endpoint in `Api/StatusEndpoints.cs` (check where the file is in the pipeline)
+> 1. Backend: Implement the status endpoint in `routes/status.ts` (check where the file is in the pipeline)
 > 2. Frontend: Implement the API client function, polling hook, and status component
 > 3. Wire it into the upload page
 >
@@ -137,7 +137,7 @@ For full-stack candidates. The Tech Lead says:
 - Gives up quickly on errors
 
 ### Green Flags
-- Reads `TransformationPipeline.cs` and existing tests first to understand patterns
+- Reads `TransformationPipeline.ts` and existing tests first to understand patterns
 - Asks clarifying questions about requirements
 - Reviews and edits AI-generated code
 - Runs tests incrementally (not just at the end)

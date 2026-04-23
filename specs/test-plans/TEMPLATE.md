@@ -14,8 +14,8 @@
 
 | Level | Framework | Location |
 |---|---|---|
-| Unit | xUnit | `tests/OrderTransformer.Tests/Services/` |
-| Integration | xUnit + Docker | `tests/OrderTransformer.Tests/Integration/` |
+| Unit | Vitest | `node-backend/tests/` |
+| Integration | Vitest + Docker | Manual testing |
 | E2E | Docker Compose | Manual / CI |
 
 ## Test Cases
@@ -48,5 +48,5 @@
 
 ```bash
 # Run all tests for this feature
-dotnet test tests/OrderTransformer.Tests --filter "FullyQualifiedName~[FilterPattern]"
+cd node-backend && npm test
 ```

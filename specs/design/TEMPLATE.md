@@ -18,7 +18,7 @@
 
 ## Models / Interfaces
 
-```csharp
+```typescript
 // Key types introduced or modified
 ```
 
