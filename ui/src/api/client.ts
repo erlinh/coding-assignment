@@ -1,4 +1,4 @@
-import type { OrderBatchSummary, OrderBatchDetail, Stats, UploadResponse } from '../types/api'
+import type { OrderBatchSummary, OrderBatchDetail, Stats, UploadResponse, ProcessingStatus } from '../types/api'
 
 const BASE_URL = '/api/orders'
 
@@ -48,4 +48,6 @@ export async function uploadFile(file: File): Promise<UploadResponse> {
 // It should call: GET /api/orders/status/{fileName}
 // and return the ProcessingStatus response.
 //
-// Import ProcessingStatus from '../types/api'
+// Example:
+//   const status = await getStatus('order-batch-001.xml')
+//   // returns: { fileName: 'order-batch-001.xml', status: 'completed' }

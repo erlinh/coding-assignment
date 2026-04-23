@@ -72,13 +72,13 @@ Wire the status tracking into the upload page:
 
 ## Where to Implement
 
-| File | What to Implement |
-|------|-------------------|
-| `node-backend/src/routes/status.ts` | Status checking logic (check prefixes in blob storage) |
-| `ui/src/api/client.ts` | `getStatus(fileName)` function |
-| `ui/src/hooks/useProcessingStatus.ts` | Polling hook with useEffect and setInterval |
-| `ui/src/components/ProcessingStatus.tsx` | Status display component with all states |
-| `ui/src/pages/UploadPage.tsx` | Integration (add state + render ProcessingStatus) |
+| File | What to Implement | Status |
+|------|-------------------|--------|
+| `node-backend/src/routes/status.ts` | Status checking logic | ✅ DONE |
+| `ui/src/api/client.ts` | `getStatus(fileName)` function | TODO |
+| `ui/src/hooks/useProcessingStatus.ts` | Polling hook with useEffect and setInterval | TODO |
+| `ui/src/components/ProcessingStatus.tsx` | Status display component with all states | TODO |
+| `ui/src/pages/UploadPage.tsx` | Integration (add state + render ProcessingStatus) | TODO |
 
 Each file has TODO comments explaining what to implement.
 
@@ -116,8 +116,8 @@ Upload Page
 
 ## Acceptance Criteria
 
-- [ ] Status endpoint returns correct status for files in each prefix
-- [ ] `outputBlobName` included only for completed status
+- [x] Status endpoint returns correct status for files in each prefix
+- [x] `outputBlobName` included only for completed status
 - [ ] Polling hook starts on upload, stops on terminal state
 - [ ] Interval cleaned up on unmount (no memory leaks)
 - [ ] All four status states rendered with appropriate styling

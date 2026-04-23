@@ -1,6 +1,6 @@
 # Feature 004: Upload Processing Status Tracking
 
-**Status:** Not Started (Candidate Extension Point)
+**Status:** Partially Implemented (Backend done, Frontend needs integration)
 
 ## Background
 
@@ -8,22 +8,22 @@ When a user uploads an XML order file through the UI, they receive a success con
 
 ## Requirements
 
-### Status Endpoint (Backend)
+### Status Endpoint (Backend) — ✅ IMPLEMENTED
 - `GET /api/orders/status/{fileName}` returns the current processing status
 - Status is determined by checking blob storage prefixes:
-  - File found in `output/` (as `.json`) → `completed`
+  - File found in `output/` → `completed`
   - File found in `failed/` → `failed`
   - File found in `input/` → `pending`
   - Not found anywhere → `not_found`
-- Response includes `fileName`, `status`, and optionally `outputBlobName` (when completed)
+- Response: `{ fileName, status }`
 
-### Polling Hook (Frontend)
+### Polling Hook (Frontend) — TO IMPLEMENT
 - Custom React hook `useProcessingStatus(fileName)`
 - Polls the status endpoint every 2 seconds
 - Stops polling when a terminal state is reached (`completed` or `failed`)
 - Cleans up interval on unmount
 
-### Status Component (Frontend)
+### Status Component (Frontend) — TO IMPLEMENT
 - Displays current processing status with appropriate styling:
   - **Pending**: Amber/yellow with pulsing animation
   - **Completed**: Green with link to view results
@@ -31,12 +31,21 @@ When a user uploads an XML order file through the UI, they receive a success con
   - **Not found**: Gray neutral message
 - Integrates into the upload page after successful upload
 
-### API Client (Frontend)
-- `getStatus(fileName)` function in the API client module
+### API Client (Frontend) — TO IMPLEMENT
+- `getStatus(fileName)` function in `ui/src/api/client.ts`
+
+## Files to Implement
+
+| File | What to Implement |
+|------|-------------------|
+| `ui/src/api/client.ts` | Implement `getStatus(fileName)` function |
+| `ui/src/hooks/useProcessingStatus.ts` | Implement polling hook |
+| `ui/src/components/ProcessingStatus.tsx` | Implement status display component |
+| `ui/src/pages/UploadPage.tsx` | Wire ProcessingStatus after upload |
 
 ## Acceptance Criteria
 
-- [ ] Status endpoint correctly identifies file status from blob prefixes
+- [x] Status endpoint correctly identifies file status from blob prefixes
 - [ ] Polling hook starts on upload, stops on terminal state
 - [ ] Interval is cleaned up on component unmount
 - [ ] All status states rendered with appropriate styling

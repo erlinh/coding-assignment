@@ -22,13 +22,18 @@ This is a Node.js/Fastify application that monitors Azure Blob Storage (Azurite 
 
 ## Candidate Extension Points (STUBS to implement)
 
-### Frontend (React/TypeScript)
-- `ui/src/hooks/useProcessingStatus.ts` - Polling hook for file processing status
-- `ui/src/components/ProcessingStatus.tsx` - Status display component
-- `ui/src/api/client.ts` - `getStatus()` function (TODO comment)
+### Frontend (React/TypeScript) — Spec 004
+The main interview task is implementing upload processing status tracking:
 
-### Backend (if extending)
-- Status endpoint is wired but frontend polling hook not integrated with upload page
+1. **`ui/src/api/client.ts`** — Implement `getStatus(fileName)` function (see TODO comment)
+2. **`ui/src/hooks/useProcessingStatus.ts`** — Polling hook that polls every 2 seconds, stops on terminal state
+3. **`ui/src/components/ProcessingStatus.tsx`** — Status display (pending/completed/failed/not_found)
+4. **`ui/src/pages/UploadPage.tsx`** — Wire ProcessingStatus after successful upload
+
+### Backend (Already Implemented)
+- Status endpoint: `GET /api/orders/status/{fileName}` ✅
+- Validation service: `OrderValidatorService.ts` ✅
+- Field mapping service: `FieldMappingService.ts` ✅
 
 ## Commands
 ```bash

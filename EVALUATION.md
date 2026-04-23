@@ -77,17 +77,18 @@ For full-stack candidates. The Tech Lead says:
 > "Great work on the backend. Now let's add a user-facing feature. The React UI is already built — you can see it in the browser. When you upload an XML file, you get a success message but no way to know when processing finishes.
 >
 > Your task is to add **upload processing status tracking**:
-> 1. Backend: Implement the status endpoint in `routes/status.ts` (check where the file is in the pipeline)
-> 2. Frontend: Implement the API client function, polling hook, and status component
-> 3. Wire it into the upload page
+> 1. Frontend: Implement the API client `getStatus()` function in `api/client.ts`
+> 2. Frontend: Implement the polling hook `useProcessingStatus` in `hooks/useProcessingStatus.ts`
+> 3. Frontend: Implement the status component `ProcessingStatus` in `components/ProcessingStatus.tsx`
+> 4. Wire it into the upload page so status shows after upload
 >
-> See `NEW-FEATURE-FULLSTACK.md` for details. The stubs have TODO comments explaining what to implement."
+> The backend status endpoint already exists at `GET /api/orders/status/{fileName}`. See `specs/features/004-upload-processing-status.md` for details."
 
 ### Full-Stack Scoring
 
 | Criteria | Excellent (5) | Good (3-4) | Needs Work (1-2) |
 |----------|--------------|------------|------------------|
-| **Status endpoint** | Correctly checks output/ → failed/ → input/ prefixes, proper response shape, handles edge cases | Checks some prefixes, mostly correct response | Incomplete or incorrect logic |
+| **getStatus function** | Correctly calls status endpoint, proper error handling | Works with minor issues | Broken or missing |
 | **Polling hook** | Correct useEffect lifecycle, interval cleanup, stops on terminal state, handles errors | Hook works, may have cleanup issues or missing error handling | Broken hook, no cleanup, doesn't stop polling |
 | **Status component** | All states rendered (pending/completed/failed/not_found), appropriate styling, results link works | Most states rendered, minor styling issues | Missing states or broken rendering |
 | **Integration** | Upload → poll → status → link works end-to-end smoothly | Mostly works, minor issues | Integration broken or incomplete |
