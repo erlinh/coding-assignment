@@ -8,13 +8,80 @@ interface OrderRoutesOptions {
   outputPrefix: string;
 }
 
+const statsSchema = {
+  schema: {
+    tags: ["orders"],
+    response: {
+      200: {
+        type: "object",
+        properties: {
+          totalBatches: { type: "integer" },
+          totalOrders: { type: "integer" },
+          errorCount: { type: "integer" },
+          pendingFiles: { type: "integer" },
+          failedFiles: { type: "integer" },
+        },
+      },
+    },
+  },
+};
+
+const uploadSchema = {
+  schema: {
+    tags: ["orders"],
+    response: {
+      200: {
+        type: "object",
+        properties: {
+          success: { type: "boolean" },
+          fileName: { type: "string" },
+          message: { type: "string" },
+        },
+      },
+    },
+  },
+};
+
+const listOrdersSchema = {
+  schema: {
+    tags: ["orders"],
+    response: {
+      200: {
+        type: "array",
+        items: {
+          type: "object",
+          properties: {
+            blobName: { type: "string" },
+            tenantId: { type: "string" },
+            orderCount: { type: "integer" },
+            processedAt: { type: "string" },
+            validationErrorCount: { type: "integer" },
+          },
+        },
+      },
+    },
+  },
+};
+
+const getOrderSchema = {
+  schema: {
+    tags: ["orders"],
+    params: {
+      type: "object",
+      properties: {
+        blobName: { type: "string" },
+      },
+    },
+  },
+};
+
 export async function registerOrderRoutes(
   fastify: FastifyInstance,
   options: OrderRoutesOptions
 ): Promise<void> {
   const { blobService, inputPrefix, outputPrefix } = options;
 
-  fastify.get("/api/orders/stats", async () => {
+  fastify.get("/api/orders/stats", statsSchema, async () => {
     const allBlobs = await blobService.listBlobs("");
     const outputBlobs = allBlobs.filter((b) => b.name.startsWith(outputPrefix));
     const inputBlobs = allBlobs.filter((b) => b.name.startsWith(inputPrefix));
@@ -53,7 +120,7 @@ export async function registerOrderRoutes(
     };
   });
 
-  fastify.post("/api/orders/upload", async (request) => {
+  fastify.post("/api/orders/upload", uploadSchema, async (request) => {
     const data = await request.file();
     if (!data) {
       throw new Error("No file uploaded");
@@ -72,7 +139,7 @@ export async function registerOrderRoutes(
     };
   });
 
-  fastify.get("/api/orders/", async () => {
+  fastify.get("/api/orders/", listOrdersSchema, async () => {
     const allBlobs = await blobService.listBlobs("");
     const outputBlobs = allBlobs.filter(
       (b) => b.name.startsWith(outputPrefix) && b.name.endsWith(".json")
@@ -95,7 +162,7 @@ export async function registerOrderRoutes(
     return summaries;
   });
 
-  fastify.get("/api/orders/{blobName}", async (request, reply) => {
+  fastify.get("/api/orders/{blobName}", getOrderSchema, async (request, reply) => {
     const { blobName } = request.params as { blobName: string };
     const fullBlobName = `${outputPrefix}${blobName}`;
 

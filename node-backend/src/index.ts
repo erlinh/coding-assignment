@@ -1,5 +1,7 @@
 import Fastify from "fastify";
 import multipart from "@fastify/multipart";
+import swagger from "@fastify/swagger";
+import swaggerUi from "@fastify/swagger-ui";
 import { loadConfig } from "./config/index.js";
 import { createServiceFactory } from "./services/factories.js";
 import { registerOrderRoutes } from "./routes/orders.js";
@@ -11,6 +13,31 @@ const config = loadConfig();
 
 const fastify = Fastify({
   logger: true,
+});
+
+await fastify.register(swagger, {
+  openapi: {
+    info: {
+      title: "Order Transformer API",
+      description: "Azure Blob Storage XML to JSON transformer API",
+      version: "1.0.0",
+    },
+    servers: [
+      { url: "http://localhost:5000", description: "Local development" },
+    ],
+    tags: [
+      { name: "orders", description: "Order management endpoints" },
+      { name: "status", description: "File processing status endpoints" },
+    ],
+  },
+});
+
+await fastify.register(swaggerUi, {
+  routePrefix: "/docs",
+  uiConfig: {
+    docExpansion: "list",
+    deepLinking: true,
+  },
 });
 
 await fastify.register(multipart, {

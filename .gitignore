@@ -40,3 +40,4 @@ ui/dist/
 src/OrderTransformer/wwwroot/
 
 .evaluation/
+ui/node_modules/

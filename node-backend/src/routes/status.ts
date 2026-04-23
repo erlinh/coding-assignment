@@ -8,13 +8,34 @@ interface StatusRoutesOptions {
   failedPrefix: string;
 }
 
+const statusSchema = {
+  schema: {
+    tags: ["status"],
+    params: {
+      type: "object",
+      properties: {
+        fileName: { type: "string" },
+      },
+    },
+    response: {
+      200: {
+        type: "object",
+        properties: {
+          status: { type: "string", enum: ["pending", "completed", "failed", "not_found"] },
+          fileName: { type: "string" },
+        },
+      },
+    },
+  },
+};
+
 export async function registerStatusRoutes(
   fastify: FastifyInstance,
   options: StatusRoutesOptions
 ): Promise<void> {
   const { blobService, inputPrefix, outputPrefix, failedPrefix } = options;
 
-  fastify.get("/api/orders/status/{fileName}", async (request, reply) => {
+  fastify.get("/api/orders/status/{fileName}", statusSchema, async (request, reply) => {
     const { fileName } = request.params as { fileName: string };
 
     const inputBlobName = `${inputPrefix}${fileName}`;

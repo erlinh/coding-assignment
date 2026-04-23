@@ -9,9 +9,11 @@
     "test": "vitest run",
     "test:watch": "vitest"
   },
-  "dependencies": {
+"dependencies": {
     "@azure/storage-blob": "^12.15.0",
     "@fastify/multipart": "^8.3.1",
+    "@fastify/swagger": "^8.15.0",
+    "@fastify/swagger-ui": "^3.0.0",
     "fast-xml-parser": "^4.3.4",
     "fastify": "^4.26.0",
     "pino": "^8.19.0"
