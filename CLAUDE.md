@@ -1,64 +1,63 @@
 # Order Transformer - Coding Assessment
 
 ## Project Overview
-This is a .NET 9 Web Application that monitors Azure Blob Storage (Azurite emulator) for incoming XML order files, transforms them to JSON, and writes output back to blob storage. It includes a React UI for viewing processed orders and uploading new files.
+This is a Node.js/Fastify application that monitors Azure Blob Storage (Azurite emulator) for incoming XML order files, transforms them to JSON, and writes output back to blob storage. It includes a React UI for viewing processed orders and uploading new files.
 
 ## Architecture
 - **Pipeline pattern**: `Parse XML → Validate → Map Fields → Transform to JSON → Store`
-- **DI-based services**: All services registered via interfaces in `Program.cs`
-- **BackgroundService**: `BlobPollingWorker` polls blob storage on a timer
-- **Minimal API**: REST endpoints for listing, viewing, and uploading orders
-- **React UI**: Single-page app served from wwwroot (production) or Vite dev server
+- **Factory-based DI**: All services created via factory functions
+- **Background worker**: `BlobPollingWorker` polls blob storage on a timer using setInterval
+- **Fastify routes**: REST endpoints for listing, viewing, and uploading orders
+- **React UI**: Single-page app served from Vite dev server or static build
 
 ## Key Files
-- `src/OrderTransformer/Worker/TransformationPipeline.cs` - Orchestrates the processing pipeline
-- `src/OrderTransformer/Worker/BlobPollingWorker.cs` - Polls blob storage for new files
-- `src/OrderTransformer/Models/OrderModels.cs` - Domain models (immutable records)
-- `src/OrderTransformer/Services/` - All service interfaces and implementations
-- `src/OrderTransformer/Api/OrderEndpoints.cs` - REST API endpoints
-- `src/OrderTransformer/Api/StatusEndpoints.cs` - Status tracking endpoint (stub)
+- `node-backend/src/index.ts` - Fastify server setup and start
+- `node-backend/src/worker/TransformationPipeline.ts` - Orchestrates the processing pipeline
+- `node-backend/src/worker/BlobPollingWorker.ts` - Polls blob storage for new files
+- `node-backend/src/types/models.ts` - Domain models (TypeScript interfaces)
+- `node-backend/src/services/` - All service implementations
+- `node-backend/src/routes/orders.ts` - REST API endpoints
+- `node-backend/src/routes/status.ts` - Status tracking endpoint
 - `ui/` - React frontend application
 
 ## Candidate Extension Points (STUBS to implement)
-
-### Backend (.NET)
-- `Services/OrderValidatorService.cs` - Validate order fields (required fields, format patterns, ranges)
-- `Services/FieldMappingService.cs` - Map field values (country codes→names, product codes→categories, status→labels)
-- `Api/StatusEndpoints.cs` - Return processing status for uploaded files
-- `Tests/Services/OrderValidatorServiceTests.cs` - Unit tests for validation
-- `Tests/Services/FieldMappingServiceTests.cs` - Unit tests for mapping
 
 ### Frontend (React/TypeScript)
 - `ui/src/hooks/useProcessingStatus.ts` - Polling hook for file processing status
 - `ui/src/components/ProcessingStatus.tsx` - Status display component
 - `ui/src/api/client.ts` - `getStatus()` function (TODO comment)
 
+### Backend (if extending)
+- Status endpoint is wired but frontend polling hook not integrated with upload page
+
 ## Commands
 ```bash
-# .NET
-dotnet build src/OrderTransformer                    # Build the app
-dotnet test tests/OrderTransformer.Tests             # Run tests
-dotnet run --project src/OrderTransformer            # Run locally (port 5000)
+# Backend
+cd node-backend && npm install         # Install dependencies
+cd node-backend && npm run build       # Build TypeScript
+cd node-backend && npm test            # Run tests
+npm run dev                           # Run both backend + frontend (from root)
 
 # UI
-cd ui && pnpm install                                # Install UI dependencies
-cd ui && pnpm dev                                    # Vite dev server (port 5173)
-cd ui && pnpm build                                  # Build to wwwroot
+cd ui && pnpm install                 # Install UI dependencies
+cd ui && pnpm dev                     # Vite dev server (port 5173)
+cd ui && pnpm build                   # Build to static files
 
 # Docker
-docker compose up -d                                 # Start Azurite
-docker compose --profile app up --build -d           # Run everything
+docker compose up -d                  # Start Azurite
+npm run dev                           # Run app with nx (both services)
 ```
 
 ## Conventions
 
-### C# (.NET)
-- Use C# records with `init` setters for immutable models
-- Follow existing interface + implementation pattern for services
-- Use xUnit with `[Fact]` and `[Theory]` for tests
-- Use `System.Text.Json` for JSON serialization
-- Use `System.Xml.Linq` for XML parsing
-- Namespace: `OrderTransformer.Models`, `OrderTransformer.Services`, `OrderTransformer.Worker`, `OrderTransformer.Api`
+### TypeScript (Node.js/Fastify)
+- Use TypeScript strict mode (no `any`)
+- Use `interface` for object shapes and `type` for unions/primitives
+- Follow existing factory pattern for service instantiation
+- Use Vitest with `describe`/`it`/`expect` for tests
+- Use `fast-xml-parser` for XML parsing
+- Use `@azure/storage-blob` for blob operations
+- Namespace folders by concern: `routes/`, `services/`, `worker/`, `types/`, `config/`
 
 ### TypeScript (React)
 - Use TypeScript strict mode (no `any`)

@@ -139,7 +139,22 @@ export async function registerOrderRoutes(
     };
   });
 
-  fastify.get("/api/orders", listOrdersSchema, async () => {
+  fastify.get("/api/orders", async (request, reply) => {
+    const { id } = request.query as { id?: string };
+
+    if (id) {
+      const fullBlobName = `${outputPrefix}${id}`;
+      if (!fullBlobName.endsWith(".json")) {
+        return reply.status(404).send({ error: "Not found" });
+      }
+      try {
+        const content = await blobService.downloadBlob(fullBlobName);
+        return JSON.parse(content);
+      } catch {
+        return reply.status(404).send({ error: "Not found" });
+      }
+    }
+
     const allBlobs = await blobService.listBlobs("");
     const outputBlobs = allBlobs.filter(
       (b) => b.name.startsWith(outputPrefix) && b.name.endsWith(".json")
@@ -160,40 +175,5 @@ export async function registerOrderRoutes(
     }
 
     return summaries;
-  });
-
-  fastify.get("/api/orders/", listOrdersSchema, async () => {
-    const allBlobs = await blobService.listBlobs("");
-    const outputBlobs = allBlobs.filter(
-      (b) => b.name.startsWith(outputPrefix) && b.name.endsWith(".json")
-    );
-
-    const summaries: OrderBatchSummary[] = [];
-
-    for (const blob of outputBlobs) {
-      const content = await blobService.downloadBlob(blob.name);
-      const data = JSON.parse(content);
-      summaries.push({
-        blobName: blob.name.replace(outputPrefix, ""),
-        tenantId: data.tenantId || "",
-        orderCount: data.orderCount || 0,
-        processedAt: data.processedAt || "",
-        validationErrorCount: data.validationErrorCount || 0,
-      });
-    }
-
-    return summaries;
-  });
-
-  fastify.get("/api/orders/{blobName}", getOrderSchema, async (request, reply) => {
-    const { blobName } = request.params as { blobName: string };
-    const fullBlobName = `${outputPrefix}${blobName}`;
-
-    if (!fullBlobName.endsWith(".json")) {
-      return reply.status(404).send({ error: "Not found" });
-    }
-
-    const content = await blobService.downloadBlob(fullBlobName);
-    return JSON.parse(content);
   });
 }

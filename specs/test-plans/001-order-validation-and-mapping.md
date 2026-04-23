@@ -38,6 +38,6 @@ Test each validation rule and mapping individually. Use parameterized tests for 
 ## Run Commands
 
 ```bash
-dotnet test tests/OrderTransformer.Tests --filter "FullyQualifiedName~OrderValidator"
-dotnet test tests/OrderTransformer.Tests --filter "FullyQualifiedName~FieldMapping"
+# Node.js Tests
+cd node-backend && npm test
 ```

@@ -1,0 +1,14 @@
+{
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "dev": "nx run-many -t dev --parallel",
+    "dev:backend": "nx run backend:dev",
+    "dev:frontend": "nx run frontend:dev",
+    "build": "nx run-many -t build",
+    "test": "nx run-many -t test"
+  },
+  "devDependencies": {
+    "nx": "^22.6.5"
+  }
+}

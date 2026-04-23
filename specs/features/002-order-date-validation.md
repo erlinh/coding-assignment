@@ -1,7 +1,7 @@
 # New Feature: Order Date Validation
 
 **Spec ID:** 002
-**Status:** Draft
+**Status:** Draft (Future Enhancement — NOT Currently Implemented)
 **Author:** Product Owner
 **Date:** 2026-02-20
 

@@ -1,0 +1,26 @@
+{
+  "name": "backend",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "targets": {
+    "dev": {
+      "command": "node dist/index.js",
+      "options": {
+        "cwd": "node-backend"
+      },
+      "cache": false,
+      "persistent": true
+    },
+    "build": {
+      "command": "npm run build",
+      "options": {
+        "cwd": "node-backend"
+      }
+    },
+    "test": {
+      "command": "npm test",
+      "options": {
+        "cwd": "node-backend"
+      }
+    }
+  }
+}

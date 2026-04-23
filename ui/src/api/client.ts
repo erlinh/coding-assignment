@@ -15,7 +15,7 @@ export async function listBatches(): Promise<OrderBatchSummary[]> {
 }
 
 export async function getBatch(blobName: string): Promise<OrderBatchDetail> {
-  return fetchJson<OrderBatchDetail>(`${BASE_URL}/${blobName}`)
+  return fetchJson<OrderBatchDetail>(`${BASE_URL}?id=${encodeURIComponent(blobName)}`)
 }
 
 export async function getStats(): Promise<Stats> {

@@ -25,19 +25,18 @@ The Order Transformer system processes XML order files into JSON, but there is n
 - File is written to the `input/` blob prefix for processing
 
 ### API Endpoints
-- `GET /api/orders` — List output blobs with summary data
+- `GET /api/orders` — List output blobs with summary data (with optional `?id=` for specific batch)
 - `GET /api/orders/stats` — Aggregate statistics across all blobs
-- `GET /api/orders/{blobName}` — Raw JSON content of a specific output blob
+- `GET /api/orders?id={blobName}` — Raw JSON content of a specific output blob
 - `POST /api/orders/upload` — Upload an XML file to the input prefix
 
 ## Technical Decisions
 
-- **Web Host**: Converted from Worker SDK to Web SDK; `WebApplication` supports both API endpoints and `AddHostedService` for the background worker
-- **Minimal API**: Used `MapGroup` and endpoint methods rather than controllers for lightweight routing
+- **Backend**: Node.js/Fastify with TypeScript
 - **CORS**: Configured for Vite dev server (localhost:5173) during development
-- **Static Files**: Production builds served via `UseStaticFiles` + `MapFallbackToFile` for SPA routing
-- **React + Vite**: TypeScript, TailwindCSS v3, React Router v7
-- **Proxy**: Vite dev server proxies `/api` to the .NET backend on port 5000
+- **React + Vite**: TypeScript, TailwindCSS, React Router v7
+- **Proxy**: Vite dev server proxies `/api` to the Node.js backend on port 5000
+- **API Route**: Individual batch detail uses query parameter (`?id=`) due to filename encoding concerns with path parameters
 
 ## Acceptance Criteria
 

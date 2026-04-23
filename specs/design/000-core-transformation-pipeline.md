@@ -8,7 +8,7 @@
 
 ## Approach
 
-.NET Worker Service with a background poller that watches blob storage and runs files through a linear pipeline of services.
+Node.js/Fastify backend with a background poller that watches blob storage and runs files through a linear pipeline of services.
 
 ## Architecture
 
@@ -16,7 +16,7 @@
 Blob Storage (input/)
     │
     ▼
-Polling Worker (BackgroundService)
+Polling Worker (setInterval)
     │
     ▼
 Transformation Pipeline
@@ -31,8 +31,8 @@ Blob Storage (output/ or processed/ or failed/)
 
 ## Key Decisions
 
-- **Pipeline pattern** — each stage is a separate service behind an interface, composed via DI
-- **Immutable models** — C# records with `init` setters, transformations return new instances
+- **Pipeline pattern** — each stage is a separate service, composed via factory pattern
+- **Immutable data** — TypeScript objects, transformations create new instances
 - **All-errors validation** — collect every error rather than fail-fast, so consumers see the full picture
 - **Validation doesn't block** — invalid orders still produce output, errors travel alongside data
 - **Polling over events** — simpler for local dev with Azurite, no EventGrid dependency

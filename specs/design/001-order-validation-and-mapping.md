@@ -32,13 +32,13 @@ Both services already have interfaces and are wired into the pipeline. Only the 
 
 - Use static dictionaries for each mapping type (country, product, status)
 - Lookup with fallback — if code not found, return original value unchanged
-- Return a new batch instance (records are immutable, use `with` expressions)
+- Return a new batch instance (immutable data, spread operators)
 - Apply all mappings to every order in the batch
 
 ## Test Strategy
 
 - One test per validation rule with valid and invalid inputs
-- Use `[Theory]` with `[InlineData]` for multiple invalid format examples
+- Use Vitest's `describe.each` or `it.each` for parameterized tests
 - One test per mapping type with known values + one for unknown values
 - Test with multi-order batches to verify all orders are processed
 
@@ -46,7 +46,6 @@ Both services already have interfaces and are wired into the pipeline. Only the 
 
 | File | What |
 |---|---|
-| `Services/OrderValidatorService.cs` | Implement `Validate()` |
-| `Services/FieldMappingService.cs` | Implement `MapFields()` |
-| `Tests/Services/OrderValidatorServiceTests.cs` | Add validation tests |
-| `Tests/Services/FieldMappingServiceTests.cs` | Add mapping tests |
+| `services/OrderValidatorService.ts` | Implement `validate()` |
+| `services/FieldMappingService.ts` | Implement `mapFields()` |
+| `tests/*.test.ts` | Add validation and mapping tests |

@@ -1,4 +1,4 @@
-# ADR-002: Immutable Records for Domain Models
+# ADR-002: Immutable Data for Domain Models
 
 **Status:** Accepted
 **Date:** 2026-02-19
@@ -9,11 +9,11 @@ Data flows through multiple pipeline stages. We need to prevent accidental mutat
 
 ## Decision
 
-Use C# records with `init` setters. Transformations create new instances via `with` expressions.
+Use immutable data structures. Transformations create new instances rather than mutating existing objects.
 
 ## Consequences
 
-- Thread-safe by default, no shared mutable state
+- No shared mutable state between pipeline stages
 - Clear data ownership — each stage gets input, returns new output
-- Nested updates can be verbose but remain explicit
-- All services can safely be singletons
+- Transformations are explicit about what changes
+- Services can safely process data concurrently

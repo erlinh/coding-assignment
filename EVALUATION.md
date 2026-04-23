@@ -44,15 +44,15 @@ The Product Owner explains the current pipeline and describes the new validation
 
 The Tech Lead provides the candidate with the repo and says:
 
-> "Good design. The project is ready on this machine. It builds and all 16 existing tests pass. There are stub services for `OrderValidatorService` and `FieldMappingService` already wired into the pipeline — they currently do nothing. Your task is:
+> "Good design. The project is ready on this machine. It builds and all 44 existing tests pass. There are stub services for `OrderValidatorService` and `FieldMappingService` already wired into the pipeline — they currently do nothing. Your task is:
 >
-> 1. Implement validation logic in `OrderValidatorService.cs`
-> 2. Implement mapping logic in `FieldMappingService.cs`
+> 1. Implement validation logic in `OrderValidatorService.ts`
+> 2. Implement mapping logic in `FieldMappingService.ts`
 > 3. Add unit tests for both
 >
 > Use AI tools — Copilot, Claude Code, ChatGPT, whatever you prefer. We want to see how you work with them.
 >
-> Start with: `docker compose up -d` to get Azurite running, then `dotnet test` to verify everything passes."
+> Start with: `docker compose up -d` to get Azurite running, then `cd node-backend && npm test` to verify everything passes."
 
 ### Implementation Scoring
 

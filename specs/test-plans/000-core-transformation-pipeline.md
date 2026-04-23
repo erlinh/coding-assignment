@@ -35,5 +35,6 @@ Unit test each pipeline stage independently. Mock dependencies in the pipeline o
 ## Run Commands
 
 ```bash
-dotnet test tests/OrderTransformer.Tests --verbosity normal
+# Node.js Tests
+cd node-backend && npm test
 ```
