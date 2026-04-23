@@ -1,42 +1,78 @@
-import { XMLParser } from "fast-xml-parser";
-import { OrderBatch, Order, OrderHeader, Customer, Address, OrderItem, OrderTotals } from "../types/OrderModels.js";
+import { XMLParser } from 'fast-xml-parser';
+import type { OrderBatch, Order, OrderHeader, Customer, Address, OrderItem, OrderTotals } from '../types/models.js';
+import type { IXmlParserService } from '../types/services.js';
 
-const NS = "http://example.com/schemas/order/v1";
-const NS_PREFIX = "ns";
+const NS = 'http://example.com/schemas/order/v1';
 
-export interface IXmlParserService {
-  parse(xml: string): OrderBatch;
+interface XmlOrder {
+  header: XmlHeader;
+  customer: XmlCustomer;
+  items: { item: XmlItem[] };
+  totals: XmlTotals;
+}
+
+interface XmlHeader {
+  orderId: string;
+  orderDate: string;
+  status: string;
+}
+
+interface XmlCustomer {
+  customerId: string;
+  name: string;
+  email: string;
+  address: XmlAddress;
+}
+
+interface XmlAddress {
+  street: string;
+  city: string;
+  postalCode: string;
+  country: string;
+}
+
+interface XmlItem {
+  lineNumber: string;
+  productCode: string;
+  description: string;
+  quantity: string;
+  unitPrice: string;
+  currency: string;
+}
+
+interface XmlTotals {
+  subtotal: string;
+  taxRate: string;
+  taxAmount: string;
+  total: string;
+  currency: string;
+}
+
+interface XmlRoot {
+  tenantId: string;
+  order: XmlOrder[];
 }
 
 export class XmlParserService implements IXmlParserService {
-  private readonly logger: (message: string) => void;
-  private readonly parser: XMLParser;
+  private parser: XMLParser;
 
-  constructor(logger: (message: string) => void = console.log) {
-    this.logger = logger;
+  constructor() {
     this.parser = new XMLParser({
       ignoreAttributes: false,
-      attributeNamePrefix: `${NS_PREFIX}@_`,
+      attributeNamePrefix: '@_',
       removeNSPrefix: true,
-      parseAttributeValue: true,
-      trimValues: true,
     });
   }
 
   parse(xml: string): OrderBatch {
-    const parsed = this.parser.parse(xml);
-    const root = parsed.orders;
+    const doc = this.parser.parse(xml) as XmlRoot;
 
-    if (!root) {
-      throw new Error("XML document has no root element");
+    if (!doc) {
+      throw new Error('XML document has no root element');
     }
 
-    const tenantId = root.tenantId || "";
-    const orders = (root.order || []).map((orderElement: Record<string, unknown>) =>
-      this.parseOrder(orderElement)
-    );
-
-    this.logger(`Parsed ${orders.length} orders for tenant ${tenantId}`);
+    const tenantId = doc.tenantId ?? '';
+    const orders = (doc.order ?? []).map((order) => this.parseOrder(order));
 
     return {
       tenantId,
@@ -44,66 +80,59 @@ export class XmlParserService implements IXmlParserService {
     };
   }
 
-  private parseOrder(orderElement: Record<string, unknown>): Order {
-    const header = this.parseHeader((orderElement.header || {}) as Record<string, unknown>);
-    const customer = this.parseCustomer((orderElement.customer || {}) as Record<string, unknown>);
-    const itemsElement = (orderElement.items as Record<string, unknown>)?.item;
-    const itemsRaw = Array.isArray(itemsElement) ? itemsElement : itemsElement ? [itemsElement] : [];
-    const items = itemsRaw.map((item) => this.parseItem(item as Record<string, unknown>));
-    const totals = this.parseTotals((orderElement.totals || {}) as Record<string, unknown>);
-
+  private parseOrder(orderElement: XmlOrder): Order {
     return {
-      header,
-      customer,
-      items,
-      totals,
+      header: this.parseHeader(orderElement.header),
+      customer: this.parseCustomer(orderElement.customer),
+      items: (orderElement.items.item ?? []).map((item) => this.parseItem(item)),
+      totals: this.parseTotals(orderElement.totals),
     };
   }
 
-  private parseHeader(element: Record<string, unknown>): OrderHeader {
+  private parseHeader(element: XmlHeader): OrderHeader {
     return {
-      orderId: (element.orderId as string) || "",
-      orderDate: (element.orderDate as string) || "",
-      status: (element.status as string) || "",
+      orderId: element.orderId ?? '',
+      orderDate: element.orderDate ?? '',
+      status: element.status ?? '',
     };
   }
 
-  private parseCustomer(element: Record<string, unknown>): Customer {
+  private parseCustomer(element: XmlCustomer): Customer {
     return {
-      customerId: (element.customerId as string) || "",
-      name: (element.name as string) || "",
-      email: (element.email as string) || "",
-      address: this.parseAddress((element.address || {}) as Record<string, unknown>),
+      customerId: element.customerId ?? '',
+      name: element.name ?? '',
+      email: element.email ?? '',
+      address: this.parseAddress(element.address),
     };
   }
 
-  private parseAddress(element: Record<string, unknown>): Address {
+  private parseAddress(element: XmlAddress): Address {
     return {
-      street: (element.street as string) || "",
-      city: (element.city as string) || "",
-      postalCode: (element.postalCode as string) || "",
-      country: (element.country as string) || "",
+      street: element.street ?? '',
+      city: element.city ?? '',
+      postalCode: element.postalCode ?? '',
+      country: element.country ?? '',
     };
   }
 
-  private parseItem(element: Record<string, unknown>): OrderItem {
+  private parseItem(element: XmlItem): OrderItem {
     return {
-      lineNumber: parseInt((element.lineNumber as string) || "0", 10),
-      productCode: (element.productCode as string) || "",
-      description: (element.description as string) || "",
-      quantity: parseInt((element.quantity as string) || "0", 10),
-      unitPrice: parseFloat((element.unitPrice as string) || "0"),
-      currency: (element.currency as string) || "",
+      lineNumber: parseInt(element.lineNumber, 10) || 0,
+      productCode: element.productCode ?? '',
+      description: element.description ?? '',
+      quantity: parseInt(element.quantity, 10) || 0,
+      unitPrice: parseFloat(element.unitPrice) || 0,
+      currency: element.currency ?? '',
     };
   }
 
-  private parseTotals(element: Record<string, unknown>): OrderTotals {
+  private parseTotals(element: XmlTotals): OrderTotals {
     return {
-      subtotal: parseFloat((element.subtotal as string) || "0"),
-      taxRate: parseFloat((element.taxRate as string) || "0"),
-      taxAmount: parseFloat((element.taxAmount as string) || "0"),
-      total: parseFloat((element.total as string) || "0"),
-      currency: (element.currency as string) || "",
+      subtotal: parseFloat(element.subtotal) || 0,
+      taxRate: parseFloat(element.taxRate) || 0,
+      taxAmount: parseFloat(element.taxAmount) || 0,
+      total: parseFloat(element.total) || 0,
+      currency: element.currency ?? '',
     };
   }
 }

@@ -1,16 +1,7 @@
-import { OrderBatch, ValidationError } from "../types/OrderModels.js";
-
-export interface IJsonTransformerService {
-  transform(batch: OrderBatch, validationErrors: ValidationError[]): string;
-}
+import type { OrderBatch, ValidationError } from '../types/models.js';
+import type { IJsonTransformerService } from '../types/services.js';
 
 export class JsonTransformerService implements IJsonTransformerService {
-  private readonly logger: (message: string) => void;
-
-  constructor(logger: (message: string) => void = console.log) {
-    this.logger = logger;
-  }
-
   transform(batch: OrderBatch, validationErrors: ValidationError[]): string {
     const output = {
       tenantId: batch.tenantId,
@@ -21,8 +12,6 @@ export class JsonTransformerService implements IJsonTransformerService {
       orders: batch.orders,
     };
 
-    const json = JSON.stringify(output, null, 2);
-    this.logger(`Transformed batch to JSON (${json.length} bytes)`);
-    return json;
+    return JSON.stringify(output, null, 2);
   }
 }
