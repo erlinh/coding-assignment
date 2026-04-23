@@ -3,15 +3,18 @@ import { XmlParserService } from './XmlParserService.js';
 import { OrderValidatorService } from './OrderValidatorService.js';
 import { FieldMappingService } from './FieldMappingService.js';
 import { JsonTransformerService } from './JsonTransformerService.js';
+import { BlobStorageService } from './BlobStorageService.js';
+import type { BlobStorageConfig } from '../config/index.js';
 
 export interface ServiceFactory {
   createXmlParserService(): IXmlParserService;
   createOrderValidatorService(): IOrderValidatorService;
   createFieldMappingService(): IFieldMappingService;
   createJsonTransformerService(): IJsonTransformerService;
+  createBlobStorageService(): BlobStorageService;
 }
 
-export function createServiceFactory(): ServiceFactory {
+export function createServiceFactory(blobStorageConfig: BlobStorageConfig): ServiceFactory {
   return {
     createXmlParserService(): IXmlParserService {
       return new XmlParserService();
@@ -24,6 +27,9 @@ export function createServiceFactory(): ServiceFactory {
     },
     createJsonTransformerService(): IJsonTransformerService {
       return new JsonTransformerService();
+    },
+    createBlobStorageService(): BlobStorageService {
+      return new BlobStorageService(blobStorageConfig);
     },
   };
 }

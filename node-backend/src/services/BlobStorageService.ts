@@ -4,10 +4,10 @@ import {
   BlockBlobClient,
   BlobItem,
 } from "@azure/storage-blob";
-import { config } from "../config/index.js";
+import type { BlobStorageConfig } from "../config/index.js";
 
 export interface IBlobStorageService {
-  listBlobs(prefix: string): Promise<string[]>;
+  listBlobs(prefix: string): Promise<BlobItem[]>;
   downloadBlob(name: string): Promise<string>;
   uploadBlob(name: string, content: string): Promise<void>;
   moveBlob(source: string, dest: string): Promise<void>;
@@ -17,34 +17,24 @@ export class BlobStorageService implements IBlobStorageService {
   private readonly containerClient: ContainerClient;
   private readonly logger: (message: string) => void;
 
-  constructor(logger: (message: string) => void = console.log) {
+  constructor(config: BlobStorageConfig, logger: (message: string) => void = console.log) {
     this.logger = logger;
-    const connectionString =
-      config.blobStorage.connectionString ||
-      (() => {
-        throw new Error("BLOB_STORAGE_CONNECTION_STRING is not configured");
-      })();
-    const containerName = config.blobStorage.containerName || "orders";
+    const connectionString = config.connectionString;
+    const containerName = config.containerName;
 
-    const blobServiceClient = BlobServiceClient.fromConnectionString(
-      connectionString
-    );
+    const blobServiceClient = BlobServiceClient.fromConnectionString(connectionString);
     this.containerClient = blobServiceClient.getContainerClient(containerName);
   }
 
-  async listBlobs(prefix: string): Promise<string[]> {
-    const blobs: string[] = [];
-    for await (const blob of this.containerClient.listBlobsFlat({
-      prefix,
-    })) {
-      blobs.push((blob as BlobItem).name);
+  async listBlobs(prefix: string): Promise<BlobItem[]> {
+    const blobs: BlobItem[] = [];
+    for await (const blob of this.containerClient.listBlobsFlat({ prefix })) {
+      blobs.push(blob);
     }
     return blobs;
   }
 
-  private async streamToString(
-    stream: NodeJS.ReadableStream
-  ): Promise<string> {
+  private async streamToString(stream: NodeJS.ReadableStream): Promise<string> {
     const chunks: Buffer[] = [];
     for await (const chunk of stream) {
       chunks.push(Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk));
@@ -62,8 +52,7 @@ export class BlobStorageService implements IBlobStorageService {
   }
 
   async uploadBlob(name: string, content: string): Promise<void> {
-    const blockBlobClient: BlockBlobClient =
-      this.containerClient.getBlockBlobClient(name);
+    const blockBlobClient: BlockBlobClient = this.containerClient.getBlockBlobClient(name);
     const buffer = Buffer.from(content, "utf-8");
     await blockBlobClient.upload(buffer, buffer.length);
     this.logger(`Written blob: ${name}`);

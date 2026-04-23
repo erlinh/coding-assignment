@@ -61,18 +61,36 @@ export class XmlParserService implements IXmlParserService {
       ignoreAttributes: false,
       attributeNamePrefix: '@_',
       removeNSPrefix: true,
+      parseTagValue: true,
+      trimValues: true,
     });
   }
 
   parse(xml: string): OrderBatch {
-    const doc = this.parser.parse(xml) as XmlRoot;
+    if (!xml || xml.trim() === '') {
+      throw new Error('XML document is empty');
+    }
 
-    if (!doc) {
+    if (!xml.includes('<orders')) {
+      throw new Error('Invalid XML: missing orders element');
+    }
+
+    let parsed;
+    try {
+      parsed = this.parser.parse(xml);
+    } catch (e) {
+      throw new Error('Invalid XML: ' + (e instanceof Error ? e.message : 'Unknown error'));
+    }
+
+    if (!parsed || typeof parsed !== 'object' || Object.keys(parsed).length === 0) {
       throw new Error('XML document has no root element');
     }
 
-    const tenantId = doc.tenantId ?? '';
-    const orders = (doc.order ?? []).map((order) => this.parseOrder(order));
+    const root = parsed.orders || parsed;
+    const tenantId = root.tenantId ?? '';
+    const orderData = root.order;
+    const ordersArray = Array.isArray(orderData) ? orderData : orderData ? [orderData] : [];
+    const orders = ordersArray.map((order: XmlOrder) => this.parseOrder(order));
 
     return {
       tenantId,
