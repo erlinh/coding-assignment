@@ -26,18 +26,3 @@ services:
     depends_on:
       azurite:
         condition: service_healthy
-
-  order-transformer:
-    build:
-      context: .
-      dockerfile: src/OrderTransformer/Dockerfile
-    container_name: order-transformer
-    profiles: [app]
-    ports:
-      - "5000:5000"
-    environment:
-      ASPNETCORE_URLS: "http://0.0.0.0:5000"
-      BlobStorage__ConnectionString: "DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://azurite:10000/devstoreaccount1;"
-    depends_on:
-      azurite-init:
-        condition: service_completed_successfully

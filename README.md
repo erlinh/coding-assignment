@@ -9,9 +9,15 @@ A Node.js/Fastify application that monitors Azure Blob Storage (Azurite) for inc
 - **Storage**: Azure Blob Storage (Azurite emulator)
 - **Pipeline**: Parse XML → Validate → Map Fields → Transform to JSON → Store
 
+## Prerequisites
+
+- **Docker** (for Azurite blob storage emulator)
+- **Node.js 18+** (for backend and frontend)
+- **pnpm** (for frontend)
+
 ## Quick Start
 
-### Start Azurite
+### Start Azurite (requires Docker)
 
 ```bash
 docker compose up -d
